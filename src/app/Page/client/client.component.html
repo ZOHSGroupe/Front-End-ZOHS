@@ -49,31 +49,7 @@
 
 <div class="my-auto">
     <div id="multiStepsValidation" class="bs-stepper shadow-none">
-        <div class="bs-stepper-header">
-            <div class="step" data-target="#accountDetailsValidation">
-                <button type="button" class="step-trigger">
-                    <span class="bs-stepper-circle">
-                        <i class="bx bx-home"></i>
-                    </span>
-                    <span class="bs-stepper-label">
-                        <span class="bs-stepper-title">Account</span>
-                        <span class="bs-stepper-subtitle">Account Details</span>
-                    </span>
-                </button>
-            </div>
-            <div class="line"></div>
-            <div class="step" data-target="#personalInfoValidation">
-                <button type="button" class="step-trigger">
-                    <span class="bs-stepper-circle">
-                        <i class="bx bx-user"></i>
-                    </span>
-                    <span class="bs-stepper-label">
-                        <span class="bs-stepper-title">Personal</span>
-                        <span class="bs-stepper-subtitle">Enter Information</span>
-                    </span>
-                </button>
-            </div>
-        </div>
+        
         <div class="bs-stepper-content pt-4">
             <form id="multiStepsForm" onSubmit="return false">
                 <!-- Account Details -->
@@ -104,12 +80,7 @@
                     </div>
                   </div>
                   
-                  <div class="col-12 d-flex justify-content-between mt-4">
-                    <button class="btn btn-label-secondary btn-prev" disabled> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
-                      <span class="d-sm-inline-block d-none">Previous</span>
-                    </button>
-                    <button class="btn btn-primary btn-next"> <span class="d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="bx bx-chevron-right bx-sm me-sm-n2"></i></button>
-                  </div>
+                  
                 </div>
               </div>
             
@@ -171,7 +142,12 @@
                             <option value="VotreVille3">Khénifra</option>
                             <option value="VotreVille3">Azilal</option>
                             <option value="VotreVille3">Fnideq</option>
-                          
+                            <option value="VotreVille3">Emouzzar</option>
+                            <option value="VotreVille3">Ouazzane</option>
+                            <option value="VotreVille3">Tahla</option>
+                            <option value="VotreVille3">Smara</option>
+                            <option value="VotreVille3">Tifelt</option>
+                            <option value="VotreVille3">Ouarzazate</option>
 
                       </select>
                     </div>
@@ -190,10 +166,12 @@
                           <option value="Female">F</option>
                       </select>
                   </div>
+                  <div class="col-md-12">
+                    <label class="form-label" for="multiStepsNationality">CreateDate</label>
+                    <input type="text" id="multiStepsNationality" name="CreateDate" class="form-control"  />
+                  </div>
                 <div class="col-12 d-flex justify-content-between mt-4">
-                    <button class="btn btn-primary btn-prev"> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
-                        <span class="d-sm-inline-block d-none">Previous</span>
-                    </button>
+                   
                     <button type="submit" class="btn btn-success btn-next btn-submit">Submit</button>
                 </div>
             </div>
