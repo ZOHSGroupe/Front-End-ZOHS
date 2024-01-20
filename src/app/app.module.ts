@@ -10,6 +10,8 @@ import { EmailVerificationComponent } from './Page/email-verification/email-veri
 import { HomeComponent } from './Page/home/home.component';
 import { NotFoundComponent } from './Page/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './Service/user/user.service';
 
 @NgModule({
   declarations: [
@@ -25,10 +27,12 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     FormsModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    UserService
   ],
   bootstrap: [AppComponent]
 })
