@@ -1,0 +1,55 @@
+
+
+<!-- ?PROD Only: Google Tag Manager (noscript) (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
+<!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript> -->
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Content -->
+
+<div class="authentication-wrapper authentication-basic px-4">
+<div class="authentication-inner py-4">
+  <!--  Two Steps Verification -->
+  <div class="card">
+    <div class="card-body">
+      <!-- Logo -->
+      <div class="app-brand justify-content-center">
+        <a routerLink="/" class="app-brand-link gap-2">
+            <img src="../../../assets/img/icons/ZOHS.png" alt="Logo" class="app-brand-logo demo" />
+          <span class="app-brand-text demo h3 mb-0 fw-bold">ZOHS</span>
+        </a>
+      </div>
+      <!-- /Logo -->
+      <h4 class="mb-2">Two Step Verification 💬</h4>
+      <p class="text-start mb-4">
+        We sent a verification code to your email. Enter the code from the mobile in the field below.
+        <span class="fw-bold d-block mt-2">{{email}}</span>
+      </p>
+      <p class="mb-0 fw-semibold">Type your 6 digit security code</p>
+      <div id="twoStepsForm" >
+        <div class="mb-3">
+          <div class="auth-input-wrapper d-flex align-items-center justify-content-sm-between numeral-mask-wrapper">
+            <input [(ngModel)]="digits[0]" id="digit1" (input)="onDigitInput(1)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1" autofocus>
+            <input [(ngModel)]="digits[1]" id="digit2" (input)="onDigitInput(2)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
+            <input [(ngModel)]="digits[2]" id="digit3" (input)="onDigitInput(3)"type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
+            <input [(ngModel)]="digits[3]" id="digit4" (input)="onDigitInput(4)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
+            <input [(ngModel)]="digits[4]" id="digit5" (input)="onDigitInput(5)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
+            <input [(ngModel)]="digits[5]" id="digit6" (input)="onDigitInput(6)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
+          </div>
+          <!-- Create a hidden field which is combined by 3 fields above -->
+          <input type="hidden" name="otp" />
+        </div>
+        <button class="btn btn-danger d-grid w-100 mb-3" (click)="verifieCode()">
+          Verify my account
+        </button>
+        <div class="text-center">Didn't get the code?
+          <a href="javascript:void(0);" (click)="resendCode()">
+            Resend
+          </a>
+        </div>
+    </div>
+    </div>
+  </div>
+  <!-- / Two Steps Verification -->
+</div>
+</div>
+
