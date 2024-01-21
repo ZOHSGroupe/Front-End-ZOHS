@@ -10,7 +10,7 @@ export class ClientService {
   private apiUrl = 'http://localhost:8000'; 
 
   constructor(private http: HttpClient) {}
-
+  /*
   getClients(): Observable<Client[]> {
     const url = `${this.apiUrl}/client`;
     return this.http.get<Client[]>(url);
@@ -35,4 +35,5 @@ export class ClientService {
     const url = `${this.apiUrl}/client/${id}`;
     return this.http.delete(url);
   }
+  */
 }
