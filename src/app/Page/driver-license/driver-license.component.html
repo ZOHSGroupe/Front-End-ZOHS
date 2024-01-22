@@ -1,79 +1,63 @@
 <div class="authentication-wrapper authentication-cover">
-    <div class="authentication-inner row m-0">
-  
-      <!-- Left Text -->
-      <div class="d-none d-lg-flex col-lg-4 align-items-center justify-content-end p-5 pe-0">
-        <div class="w-px-400">
-          <img src="../../../assets/img/illustrations/Drive11.png" class="img-fluid scaleX-n1-rtl" alt="multi-steps" height="700" data-app-light-img="illustrations/create-account-light.png" data-app-dark-img="illustrations/create-account-dark.html">
-        </div>
+  <div class="authentication-inner row m-0">
+    <!-- Left Text -->
+    <div class="d-none d-lg-flex col-lg-4 align-items-center justify-content-end p-5 pe-0">
+      <div class="w-px-400">
+        <img src="../../../assets/img/illustrations/Drive11.png" class="img-fluid scaleX-n1-rtl" alt="multi-steps" height="700" data-app-light-img="illustrations/create-account-light.png" data-app-dark-img="illustrations/create-account-dark.html">
       </div>
-      <!-- /Left Text -->
-  
-      <!--  Multi Steps Registration -->
-      <div class="d-flex col-lg-8 authentication-bg p-sm-5 p-3 justify-content-center">
-        <div class="d-flex flex-column w-px-700">
-          <!-- Logo and Language -->
-    <div class="app-brand border-bottom mx-3 mb-4 d-flex justify-content-between align-items-center">
-        <!-- Logo Column -->
-        <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
-          <a href="/" class="app-brand-link gap-2">
-            <span class="app-brand-logo demo">
-              <img src="../../../assets/img/icons/ZOHS.png" width="300" alt="Logo" class="app-brand-logo demo" />
-            </span>
-            <span class="app-brand-text demo h3 mb-0 fw-bold">ZOHS</span>
-          </a>
-        </div>
-        
-       <!-- /Logo -->
+    </div>
+    <!-- /Left Text -->
 
-       <div class="my-auto">
-       
+    <!-- Single Step Registration -->
+    <div class="d-flex col-lg-8 authentication-bg p-sm-5 p-3 justify-content-center">
+      <div class="d-flex flex-column w-px-700">
         <div class="my-auto">
-            <div id="multiStepsValidation" class="bs-stepper shadow-none">
-              <div class="bs-stepper-header">
-                <div class="step" data-target="#accountDetailsValidation">
-                  <button type="button" class="step-trigger">
-                    <span class="bs-stepper-circle" >
-                      <i class="bx bx-home"></i>
-                    </span>                  
-                    <span class="bs-stepper-label">
-                      <span class="bs-stepper-title">Driver's License </span>
-                      <span class="bs-stepper-subtitle">Driver's License  Details</span>
-                    </span>
-                  </button>
+          <div class="content pt-4">
+            <form id="singleStepForm" ngNoForm>
+              <!-- Account Details -->
+              <div>
+                <div class="content-header mb-3">
+                  <h4>Driver's License Information</h4>
+                  <span>Enter Your Driver's License Information</span>
+                </div>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="licenseType">License Type</label>
+                    <select id="licenseType" class="form-select">
+                      <option value="">Select</option>
+                      <!-- Add appropriate options according to your model -->
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="licenseNumber">License Number</label>
+                    <input type="text" id="licenseNumber" name="licenseNumber" class="form-control" placeholder="License Number" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="issueDate">Issue Date</label>
+                    <input type="date" id="issueDate" name="issueDate" class="form-control" />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="expirationDate">Expiration Date</label>
+                    <input type="date" id="expirationDate" name="expirationDate" class="form-control" />
+                  </div>
+
+                  <div class="col-12 d-flex justify-content-between mt-4">
+                    <button class="btn btn-primary" style="background-color: #EE1C25;">Submit</button>
+                  </div>
                 </div>
               </div>
-           <div class="bs-stepper-content pt-4">
-             <form id="multiStepsForm" onSubmit="return false">
+            </form>
 
-<div id="driverLicenseForm" class="content">
-    <div class="content-header mb-3">
-      <h4>Driver's License Information</h4>
-      <span>Enter Your Driver's License Information</span>
+          
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="row g-3">
-      <div class="col-md-6">
-        <label class="form-label" for="licenseType">License Type</label>
-        <!-- Utilisez une balise select pour le type de permis -->
-        <select id="licenseType" class="form-select">
-          <option value="">Select</option>
-          <!-- Ajoutez les options appropriées selon votre modèle -->
-        </select>
-      </div>
-      <div class="col-md-6">
-        <label class="form-label" for="licenseNumber">License Number</label>
-        <input type="text" id="licenseNumber" name="licenseNumber" class="form-control" placeholder="License Number" />
-      </div>
-      <div class="col-md-6">
-        <label class="form-label" for="issueDate">Issue Date</label>
-        <input type="date" id="issueDate" name="issueDate" class="form-control" />
-      </div>
-      <div class="col-md-6">
-        <label class="form-label" for="expirationDate">Expiration Date</label>
-        <input type="date" id="expirationDate" name="expirationDate" class="form-control" />
-      </div>
-     
-    
-    </div>
+    <!-- / Single Step Registration -->
   </div>
-  
+</div>
+
+<script>
+  // Check selected custom option
+  window.Helpers.initCustomOptionCheck();
+</script>
