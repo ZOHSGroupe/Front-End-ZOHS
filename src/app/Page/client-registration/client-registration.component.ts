@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientService } from '../../Service/client/client.service';
 import { Title } from '@angular/platform-browser';
+import { UserService } from '../../Service/user/user.service';
 
 @Component({
   selector: 'app-client-registration',
@@ -9,11 +10,12 @@ import { Title } from '@angular/platform-browser';
   styleUrl: './client-registration.component.css'
 })
 export class ClientRegistrationComponent {
-  loginForm: FormGroup;
+  signupForm: FormGroup;
   code:string="";
+  idSql:string="";
 
-  constructor(private fb:FormBuilder,private userService:ClientService,private titleService:Title){
-    this.loginForm = this.fb.group({
+  constructor(private fb:FormBuilder,private userService:UserService,private titleService:Title){
+    this.signupForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.maxLength(50)]],
       lastname: ['', [Validators.required, Validators.maxLength(50)]],
       gender: ['Male', [Validators.required]], // Defaulting to 'Male'
@@ -27,6 +29,7 @@ export class ClientRegistrationComponent {
       status: ['Penging', [Validators.required]], // Defaulting to 'Active'
       frontCardNationaleImg: ['', [Validators.required]], // Defaulting to 'Active'
       backCardNationaleImg: ['', [Validators.required]], // Defaulting to 'Active'
+      clientImg: ['', [Validators.required]],
       //createDate: [''], // Assuming create_date is not used for login
       username: ['', [Validators.required, Validators.minLength(6)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -42,14 +45,45 @@ export class ClientRegistrationComponent {
   ngOnInit(): void {
     this.titleService.setTitle('User Registration');
   }
-  onSubmit():void{
+  signUp():boolean{
+    let ok:boolean=false;
+    if(this.signupForm.valid){
+      const email = this.signupForm.value.email;
+      const username = this.signupForm.value.username;
+      const password = this.signupForm.value.password;
+      const nationalId = this.signupForm.value.nationalId;
+      const idSql = this.idSql;
+      
 
+      this.userService.signup(idSql,email,username,nationalId,password).subscribe(
+        (response) => {
+          ok = true;
+          // Handle success response
+          console.log('Signin successful:', response);
+          // You may want to navigate to another page or perform additional actions here
+        },
+        (error) => {
+          // Handle error response
+          console.error('Signin failed:', error);
+          return false;
+          // You may want to display an error message to the user or perform other actions here
+        }
+      );
+    }
+    return ok;
+  }
+  
+
+
+
+  onSubmit():void{
+    
   }
   sendEmail():void{
     
   }
   getDigitsCode():string{
-    return this.loginForm.value.digit1+this.loginForm.value.digit2+this.loginForm.value.digit3+this.loginForm.value.digit4+this.loginForm.value.digit5+this.loginForm.value.digit6;
+    return this.signupForm.value.digit1+this.signupForm.value.digit2+this.signupForm.value.digit3+this.signupForm.value.digit4+this.signupForm.value.digit5+this.signupForm.value.digit6;
   }
   onDigitInput(index: number): void {
     // Move focus to the next input field if available
@@ -60,5 +94,11 @@ export class ClientRegistrationComponent {
         nextInput.focus();
       }
     }
+  }
+  OnSubmitAccountForm():void{
+
+  }
+  OnSubmitPersonalForm():void{
+
   }
 }
