@@ -1,1 +1,116 @@
-<p>vehicule works!</p>
+<div class="authentication-wrapper authentication-cover">
+    <div class="authentication-inner row m-0">
+        <!-- Left Text -->
+        <div class="d-none d-lg-flex col-lg-4 align-items-center justify-content-end p-5 pe-0">
+            <div class="w-px-400">
+                <!-- Remplacez le chemin de l'image par celui de votre image -->
+                <img src="../../../assets/img/illustrations/Vehicule.png" class="img-fluid scaleX-n1-rtl"
+                    alt="multi-steps" height="700"
+                    data-app-light-img="illustrations/create-account-light.png"
+                    data-app-dark-img="illustrations/create-account-dark.html">
+            </div>
+        </div>
+        <!-- /Left Text -->
+
+        <!-- Single Step Registration -->
+        <div class="d-flex col-lg-8 authentication-bg p-sm-5 p-3 justify-content-center">
+            <div class="d-flex flex-column w-px-700">
+                <div class="my-auto">
+                    <div class="content pt-4">
+                        <form id="singleStepForm" ngNoForm>
+                            <!-- Vehicule Details -->
+                            <div>
+                                <div class="content-header mb-3">
+                                    <h4>Vehicule Information</h4>
+                                    <span>Enter Vehicule Information</span>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="marque">Marque</label>
+                                        <input type="text" id="marque" name="marque" class="form-control"
+                                            placeholder="Marque" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="licensePlateNumber">License Plate Number</label>
+                                        <input type="text" id="licensePlateNumber" name="licensePlateNumber"
+                                            class="form-control" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="emptyWeight">Empty Weight</label>
+                                        <input type="number" id="emptyWeight" name="emptyWeight" class="form-control"
+                                             />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="grossVehicleWeightRating">Gross Vehicle Weight
+                                            Rating</label>
+                                        <input type="number" id="grossVehicleWeightRating"
+                                            name="grossVehicleWeightRating" class="form-control"
+                                             />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="typeVehicule">type Vehicule</label>
+                                        <input type="text" id="typeVehicule" name="typeVehicule" class="form-control"
+                                            />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="fuelType">fuel Type</label>
+                                        <input type="text" id="fuelType" name="fuelType" class="form-control"
+                                            />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="vehiculeIdentificationNumber">vehicule Identification Number</label>
+                                        <input type="text" id="vehiculeIdentificationNumber" name="vehiculeIdentificationNumber" class="form-control"
+                                            />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="taxIdentificationNumber">tax Identification Number</label>
+                                        <input type="text" id="taxIdentificationNumber" name="taxIdentificationNumber" class="form-control"
+                                            />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="taxHorsepower">tax Horse power</label>
+                                        <input type="text" id="taxHorsepower" name="taxHorsepower" class="form-control"
+                                            />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="currentCarValue">current Car Value</label>
+                                        <input type="number" id="currentCarValue"
+                                            name="currentCarValue" class="form-control"
+                                             />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="manufacturingDate">manu facturing Date</label>
+                                        <input type="date" id="manufacturingDate" name="manufacturingDate" class="form-control" />
+                                      </div>
+                                      <div class="col-md-6">
+                                        <label class="form-label" for=" numberOfPorts"> number Of Ports</label>
+                                        <input type="number" id=" numberOfPorts"
+                                            name=" numberOfPorts" class="form-control"
+                                             />
+                                    </div>
+                                    <!-- Ajoutez d'autres champs selon votre modèle -->
+
+                                    <div class="col-12 d-flex justify-content-between mt-4">
+                                        <button class="btn btn-primary" style="background-color: #EE1C25;">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / Single Step Registration -->
+    </div>
+</div>
+
+<script>
+    // Check selected custom option
+    window.Helpers.initCustomOptionCheck();
+</script>
+
