@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ClientService } from '../../Service/client.service';
+import { ClientService } from '../../Service/client/client.service';
 import { Title } from '@angular/platform-browser';
 
 @Component({
