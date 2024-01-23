@@ -12,7 +12,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { NotFoundComponent } from './Page/not-found/not-found.component';
 import { HomeComponent } from './Page/home/home.component';
 import { UserService } from './Service/user/user.service';
-import { AuthService } from './Service/auth/auth.service';
 import { EmailService } from './Service/email/email.service';
 import { AlertComponent } from './Component/alert/alert.component';
 import { LoginComponent } from './Page/login/login.component';
@@ -21,6 +20,8 @@ import { ForgotPasswordComponent } from './Page/forgot-password/forgot-password.
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { NotAuthorizedComponent } from './Page/not-authorized/not-authorized.component';
 import { UnderMaintenanceComponent } from './Page/under-maintenance/under-maintenance.component';
+import { TokenService } from './Service/token/token.service';
+import { JwtModule } from '@auth0/angular-jwt';
 
 // Function to load translations
 export function HttpLoaderFactory(http: HttpClient) {
@@ -54,13 +55,21 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return sessionStorage.getItem('auth_token');
+        },
+        allowedDomains: ['*'], // specify the domains where the app is allowed to request tokens
+      },
+    }),
   ],
   providers: [
     provideClientHydration(),
     provideHttpClient(withFetch()),
     ClientService,
     UserService,
-    AuthService,
+    TokenService,
     EmailService
   ],
   bootstrap: [AppComponent]

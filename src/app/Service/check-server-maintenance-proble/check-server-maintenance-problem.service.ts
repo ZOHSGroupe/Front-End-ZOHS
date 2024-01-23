@@ -8,13 +8,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CheckServerMaintenanceProblemService {
   private readonly apiUrl:string=environment.apiUrl;
+
   constructor(private readonly http:HttpClient,private readonly router:Router) { }
 
   checkGatewayConnection():void{
     this.http.get(`${this.apiUrl}/`).subscribe(
       (error:any) => {
         if(error.status==500){
-          // this.router.navigate(['/under-maintenance']); :: !!! IMPORTANT
+          //this.router.navigate(['/under-maintenance']); // !!! IMPORTANT
           console.log('not connected with the api gateway');
         }
       }

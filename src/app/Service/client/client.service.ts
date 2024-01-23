@@ -6,7 +6,7 @@ import { environment } from '../../environment.prod';
   providedIn: 'any'
 })
 export class ClientService {
-  private readonly apiUrl:string=environment.apiClientUrl;
+  private readonly apiUrl:string=environment.apiClientUrl+"/client";
   constructor(private http: HttpClient) {}
 
   createClient(FirstName:string,LastName:string,NationalID:string,Email:string,BirthDate:string,City:string,Nationality:string,Gender:string,Address:string,Tel:string): Observable<any> {
@@ -23,7 +23,7 @@ export class ClientService {
       Address,
       Tel
     };
-    return this.http.post(`${this.apiUrl}/client`, requestBody);
+    return this.http.post(`${this.apiUrl}/`, requestBody);
   }
 
   

@@ -7,7 +7,7 @@ import { environment } from '../../environment.prod';
   providedIn: 'root'
 })
 export class EmailService {
-  private apiUrl:string=environment.apiEmailUrl;
+  private apiUrl:string=environment.apiEmailUrl+"/email";
   constructor(private readonly http: HttpClient) { }
 
   sendEmailVerificationCode(username:string,email:string){
@@ -16,7 +16,7 @@ export class EmailService {
       email
     };
 
-    return this.http.post(`${this.apiUrl}/email/send-verification-code`, requestBody);
+    return this.http.post(`${this.apiUrl}/send-verification-code`, requestBody);
   }
   sendEmailPendingAdminVerfification(username:string,email:string){
     const requestBody = {
@@ -24,7 +24,7 @@ export class EmailService {
       email
     };
 
-    return this.http.post(`${this.apiUrl}/email/account-pending`, requestBody);
+    return this.http.post(`${this.apiUrl}/account-pending`, requestBody);
   }
 
 }
