@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../Service/user/user.service';
 import { Title } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CheckServerMaintenanceProblemService } from '../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
-import { TokenService } from '../../Service/token/token.service';
+import { CheckServerMaintenanceProblemService } from '../../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
+import { TokenService } from '../../../Service/token/token.service';
 
 @Component({
   selector: 'app-login',
@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    
     this.checkServerConnection.checkGatewayConnection();
     this.titleService.setTitle('Login');
   }
@@ -54,4 +53,5 @@ export class LoginComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 }
+
 

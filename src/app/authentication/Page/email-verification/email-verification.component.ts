@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ElementRef, ViewChildren, QueryList, Renderer2 } from '@angular/core';
-import { CheckServerMaintenanceProblemService } from '../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
+import { CheckServerMaintenanceProblemService } from '../../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
 
 @Component({
   selector: 'app-email-verification',

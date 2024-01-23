@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientService } from '../../Service/client/client.service';
 import { Title } from '@angular/platform-browser';
 import { UserService } from '../../Service/user/user.service';
-import { EmailService } from '../../Service/email/email.service';
-import { CheckServerMaintenanceProblemService } from '../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
+import { EmailService } from '../../../Service/email/email.service';
+import { CheckServerMaintenanceProblemService } from '../../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
 
 @Component({
   selector: 'app-client-registration',

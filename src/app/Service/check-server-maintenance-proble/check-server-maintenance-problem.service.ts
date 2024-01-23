@@ -11,14 +11,18 @@ export class CheckServerMaintenanceProblemService {
 
   constructor(private readonly http:HttpClient,private readonly router:Router) { }
 
-  checkGatewayConnection():void{
-    this.http.get(`${this.apiUrl}/`).subscribe(
-      (error:any) => {
-        if(error.status==500){
-          //this.router.navigate(['/under-maintenance']); // !!! IMPORTANT
-          console.log('not connected with the api gateway');
+  checkGatewayConnection(): void {
+    this.http.get(`${this.apiUrl}`).subscribe(
+      (response) => {
+        // Connection successful, perform actions if needed
+      },
+      (error: any) => {
+        this.router.navigate(['/under-maintenance']); // !!! IMPORTANT
+        if (error.status == 500) {
+          this.router.navigate(['/under-maintenance']); // !!! IMPORTANT
+          console.log('Not connected with the API gateway');
         }
       }
-    )
+    );
   }
 }

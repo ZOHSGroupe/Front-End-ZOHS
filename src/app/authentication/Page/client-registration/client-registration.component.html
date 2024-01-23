@@ -25,6 +25,7 @@
       [message]="alertMessage"
       (closed)="onCloseAlert()"
     ></app-alert>
+    
           <div class="my-auto">
             <div id="multiStepsValidation" class="bs-stepper shadow-none">
               <div class="bs-stepper-header">
@@ -225,7 +226,7 @@
                               <input type="hidden" name="otp" />
                             </div>
                             <div class="text-center">Didn't get the code?
-                              <a routerLink="/client-registration" (click)="sendEmailVerificationCode()">
+                              <a routerLink="/auth/client-registration" (click)="sendEmailVerificationCode()">
                                 Resend
                               </a>
                             </div>
@@ -245,7 +246,7 @@
                   <div class="divider-text">or</div>
                 </div>
                 <div class="text-center">
-                  <a routerLink="/login" class="d-flex align-items-center justify-content-center">
+                  <a routerLink="/auth/login" class="d-flex align-items-center justify-content-center">
                     <i class="bx bx-log-in scaleX-n1-rtl"></i>
                     &nbsp;&nbsp;Back to login
                   </a>

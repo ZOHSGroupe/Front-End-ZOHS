@@ -26,6 +26,7 @@
             "outputPath": "dist/front-end-lasto",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "externalDependencies":[""],
             "polyfills": [
               "zone.js"
             ],

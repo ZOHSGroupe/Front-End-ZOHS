@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClientRegistrationComponent } from './Page/client-registration/client-registration.component';
+import { ClientRegistrationComponent } from './authentication/Page/client-registration/client-registration.component';
 import { HomeComponent } from './Page/home/home.component';
 import { NotFoundComponent } from './Page/not-found/not-found.component';
-import { LoginComponent } from './Page/login/login.component';
-import { ForgotPasswordComponent } from './Page/forgot-password/forgot-password.component';
-import { EmailVerificationComponent } from './Page/email-verification/email-verification.component';
+import { LoginComponent } from './authentication/Page/login/login.component';
+import { ForgotPasswordComponent } from './authentication/Page/forgot-password/forgot-password.component';
+import { EmailVerificationComponent } from './authentication/Page/email-verification/email-verification.component';
 import { NotAuthorizedComponent } from './Page/not-authorized/not-authorized.component';
 import { UnderMaintenanceComponent } from './Page/under-maintenance/under-maintenance.component';
+import { DriverLicenseModule } from './driver-license/driver-license.module';
+import { AssuranceModule } from './assurance/assurance.module';
+import { VehiculeModule } from './vehicule/vehicule.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,17 +20,19 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: '',
   },
-  { path: 'client-registration', component: ClientRegistrationComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'email-verification', component: EmailVerificationComponent },
   { path: 'not-authorized', component: NotAuthorizedComponent },
   { path: 'under-maintenance', component: UnderMaintenanceComponent },
+
+
+  { path: 'driver-license', loadChildren: () => DriverLicenseModule },
+  { path: 'assurance', loadChildren: () => AssuranceModule },
+  { path: 'vehicule', loadChildren: () => VehiculeModule },
+  { path: 'auth' , loadChildren: () => AuthenticationModule },
+
   { path: '**', component: NotFoundComponent },
 
 
 
-  { path: '**', component: NotFoundComponent },
   
 ];
 

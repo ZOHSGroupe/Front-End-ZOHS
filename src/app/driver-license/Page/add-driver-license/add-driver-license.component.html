@@ -1,0 +1,74 @@
+<div class="authentication-wrapper authentication-cover">
+    <div class="authentication-inner row m-0">
+      <!-- Left Text -->
+      <div class="d-none d-lg-flex col-lg-4 align-items-center justify-content-end p-5 pe-0">
+        <div class="w-px-400">
+          <img src="../../../../assets/img/illustrations/Drive11.png" class="img-fluid scaleX-n1-rtl" alt="multi-steps" height="700" >
+        </div>
+      </div>
+      <!-- /Left Text -->
+  
+      <!-- Single Step Registration -->
+      <div class="d-flex col-lg-8 authentication-bg p-sm-5 p-3 justify-content-center">
+        <div class="d-flex flex-column w-px-700">
+          <div class="my-auto">
+            <div class="content pt-4">
+              <form [formGroup]="driverLicenceForm" id="singleStepForm" ngNoForm>
+                <!-- Account Details -->
+                <div>
+                  <div class="content-header mb-3">
+                    <h4>Driver's License Information</h4>
+                    <span>Enter Your Driver's License Information</span>
+                  </div>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label" for="licenseType">License Type</label>
+                      <select id="licenseType" class="form-select" formControlName="type">
+                        <option value="">Select</option>
+                        <!-- Add appropriate options according to your model -->
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="licenseNumber">License Number</label>
+                      <input type="text" id="licenseNumber" name="licenseNumber" class="form-control" placeholder="License Number" formControlName="licenseNumber" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="issueDate">Issue Date</label>
+                      <input type="date" id="issueDate" name="issueDate" class="form-control"  formControlName="issueDate"/>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label" for="expirationDate">Expiration Date</label>
+                      <input type="date" id="expirationDate" name="expirationDate" class="form-control" formControlName="expirationDate" />
+                    </div>
+                    <!-- Image Upload -->
+                    <div class="col-md-12">
+                      <label class="form-label" for="multiStepsImage">Front Driver license Card Image</label>
+                      <input type="file" id="multiStepsImage1" name="multiStepsImage" class="form-control" accept="image/png, image/jpeg, image/jpg" formControlName="frontCardDriverLicenseImg" />
+                    </div>
+                    <!-- Image Upload -->
+                    <div class="col-md-12">
+                      <label class="form-label" for="multiStepsImage">Back Driver license Card Image</label>
+                      <input type="file" id="multiStepsImage2" name="multiStepsImage" class="form-control" accept="image/png, image/jpeg, image/jpg"  formControlName="backCardDriverLicenseImg" />
+                    </div>
+  
+                    <div class="col-12 d-flex justify-content-between mt-4">
+                      <button class="btn btn-danger" style="background-color: #EE1C25;" (click)="onSubmit()">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+  
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / Single Step Registration -->
+    </div>
+  </div>
+  
+  <script>
+    // Check selected custom option
+    window.Helpers.initCustomOptionCheck();
+  </script>
+  

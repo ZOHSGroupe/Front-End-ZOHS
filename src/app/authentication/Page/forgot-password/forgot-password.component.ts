@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CheckServerMaintenanceProblemService } from '../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
+import { CheckServerMaintenanceProblemService } from '../../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
 
 @Component({
   selector: 'app-forgot-password',
