@@ -3,6 +3,7 @@ import { UserService } from '../../Service/user/user.service';
 import { Title } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../Service/auth/auth.service';
+import { CheckServerMaintenanceProblemService } from '../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   // Inside your LoginComponent class
   showPassword: boolean = false;
-  constructor(private readonly fb:FormBuilder,private readonly userService:UserService,private readonly titleService:Title,private readonly authService:AuthService){
+  constructor(private readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly fb:FormBuilder,private readonly userService:UserService,private readonly titleService:Title,private readonly authService:AuthService){
     this.loginForm = this.fb.group({
       emailOrUsername: ['',  [Validators.required, Validators.minLength(6)]],
       password: ['',  [Validators.required, Validators.minLength(6)]]
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.checkServerConnection.checkGatewayConnection();
     this.titleService.setTitle('Login');
   }
   // Inside your LoginComponent class

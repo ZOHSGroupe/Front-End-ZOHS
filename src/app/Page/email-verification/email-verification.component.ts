@@ -1,11 +1,12 @@
 import { Component, Input, OnInit, ElementRef, ViewChildren, QueryList, Renderer2 } from '@angular/core';
+import { CheckServerMaintenanceProblemService } from '../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
 
 @Component({
   selector: 'app-email-verification',
   templateUrl: './email-verification.component.html',
   styleUrl: './email-verification.component.css'
 })
-export class EmailVerificationComponent {
+export class EmailVerificationComponent implements OnInit{
   @ViewChildren('digitInput') digitInputs!: QueryList<ElementRef<HTMLInputElement>>;
 
   @Input() eventFunction: () => void=()=>{
@@ -15,6 +16,12 @@ export class EmailVerificationComponent {
   @Input() code:string="";
   @Input() lastPage:string="";
   digits: string[] = ['', '', '', '', '', ''];
+  constructor(private readonly checkServerConnection:CheckServerMaintenanceProblemService){
+
+  }
+  ngOnInit(): void {
+    this.checkServerConnection.checkGatewayConnection();
+  }
   resendCode(){
     // code change
   }

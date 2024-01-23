@@ -10,16 +10,12 @@ export class CheckServerMaintenanceProblemService {
   private readonly apiUrl:string=environment.apiUrl;
   constructor(private readonly http:HttpClient,private readonly router:Router) { }
 
-  checkGatewayConnection(){
+  checkGatewayConnection():void{
     this.http.get(`${this.apiUrl}/`).subscribe(
-      (response) => {
-        // Handle success response
-        console.log("created succussuflly");
-        // You may want to navigate to another page or perform additional actions here
-      },
-      (error) => {
+      (error:any) => {
         if(error.status==500){
-          this.router.navigate(['/under-maintenance']);
+          // this.router.navigate(['/under-maintenance']); :: !!! IMPORTANT
+          console.log('not connected with the api gateway');
         }
       }
     )
