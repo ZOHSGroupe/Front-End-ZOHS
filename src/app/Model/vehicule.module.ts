@@ -3,7 +3,7 @@
 export interface Vehicule {
     id: string;
     marque: string;
-    genre?: string; // Ajoutez d'autres champs facultatifs
+    genre?: string; 
     typeVehicule?: string;
     fuelType?: string;
     vehiculeIdentificationNumber?: string;
