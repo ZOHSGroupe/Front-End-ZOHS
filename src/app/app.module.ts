@@ -20,6 +20,7 @@ import { EmailVerificationComponent } from './Page/email-verification/email-veri
 import { ForgotPasswordComponent } from './Page/forgot-password/forgot-password.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { NotAuthorizedComponent } from './Page/not-authorized/not-authorized.component';
+import { UnderMaintenanceComponent } from './Page/under-maintenance/under-maintenance.component';
 
 // Function to load translations
 export function HttpLoaderFactory(http: HttpClient) {
@@ -36,7 +37,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     EmailVerificationComponent,
     ForgotPasswordComponent,
-    NotAuthorizedComponent
+    NotAuthorizedComponent,
+    UnderMaintenanceComponent
   ],
   imports: [
     CommonModule,

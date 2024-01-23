@@ -85,8 +85,11 @@ export class ClientRegistrationComponent implements OnInit{
 
 
 
-  onSubmit():void{
-    const values=this.signupForm.value;
+  onSubmit(event: Event):void{
+    console.log("Submit button clicked");
+  const values = this.signupForm.value;
+  event.preventDefault();
+  console.log("Form submission prevented");
     if(this.codeEmailVerification==this.getDigitsCode()){
       this.clientService.createClient(values.firstname,values.lastname,values.nationalId,values.email,values.birthDate,values.city,values.nationality,values.gender,values.address,values.tel).subscribe(
         (response) => {
@@ -113,12 +116,12 @@ export class ClientRegistrationComponent implements OnInit{
   sendEmailVerificationCode():void{
     this.codeVerificationEmailNumber=0;
     this.emailService.sendEmailVerificationCode(this.signupForm.value.username,this.signupForm.value.email).subscribe(
-      (response) => {
+      (response:any) => {
         // Handle success response
         this.codeEmailVerification=(response as {code:string,status:string,message:string})?.code;
         // You may want to navigate to another page or perform additional actions here
       },
-      (error) => {
+      (error:any) => {
         // Handle error response
         console.error('email not send');
         // You may want to display an error message to the user or perform other actions here

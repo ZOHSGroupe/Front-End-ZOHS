@@ -7,6 +7,7 @@ import { LoginComponent } from './Page/login/login.component';
 import { ForgotPasswordComponent } from './Page/forgot-password/forgot-password.component';
 import { EmailVerificationComponent } from './Page/email-verification/email-verification.component';
 import { NotAuthorizedComponent } from './Page/not-authorized/not-authorized.component';
+import { UnderMaintenanceComponent } from './Page/under-maintenance/under-maintenance.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'email-verification', component: EmailVerificationComponent },
   { path: 'not-authorized', component: NotAuthorizedComponent },
+  { path: 'under-maintenance', component: UnderMaintenanceComponent },
   { path: '**', component: NotFoundComponent },
 
 
