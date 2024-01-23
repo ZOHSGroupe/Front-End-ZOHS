@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Client } from '../../Model/client.module';
 import { environment } from '../../environment.prod';
 @Injectable({
   providedIn: 'any'
 })
 export class ClientService {
+  private readonly apiUrl:string=environment.apiClientUrl;
+  constructor(private http: HttpClient) {}
 
-  createClient(FirstName:string,LastName:string,NationalID:string,Email:string,BirthDate:string,City:string,Nationality:string,Gender:string,CreateDate:string,Status:string,Address:string,Tel:string): Observable<any> {
+  createClient(FirstName:string,LastName:string,NationalID:string,Email:string,BirthDate:string,City:string,Nationality:string,Gender:string,Address:string,Tel:string): Observable<any> {
     const requestBody={
       FirstName,
       LastName,
@@ -18,15 +19,14 @@ export class ClientService {
       City,
       Nationality,
       Gender,
-      CreateDate,
-      Status,
+      Status:'Pending',
       Address,
       Tel
     };
-    return this.http.post(`${environment.apiUrl}/client`, requestBody);
+    return this.http.post(`${this.apiUrl}/client`, requestBody);
   }
 
-  constructor(private http: HttpClient) {}
+  
   /*
   getClients(): Observable<Client[]> {
     const url = `${this.apiUrl}/client`;

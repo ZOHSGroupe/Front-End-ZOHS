@@ -1,0 +1,6 @@
+
+  <div *ngIf="visible" class="alert alert-solid-{{ type }} alert-dismissible d-flex align-items-center" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" (click)="closeAlert()" data-bs-dismiss="alert" aria-label="Close">
+    </button>
+  </div>

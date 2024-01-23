@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: sans-serif;
+    src: url('/assets/vendor/fonts/boxicons/boxicons.woff2') format('woff2');
+    font-display: sans-serif; /* or optional, fallback, etc. */
+  }
+  

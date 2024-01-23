@@ -7,8 +7,8 @@ import { environment } from '../../environment.prod';
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(private http: HttpClient) { }
+  private apiUrl:string=environment.apiAuthUrl;
+  constructor(private readonly http: HttpClient) { }
   
   signin(emailOrUsername:string,password:string): Observable<any> {
     const requestBody = {
@@ -16,7 +16,7 @@ export class UserService {
       password
     };
 
-    return this.http.post(`${environment.apiUrl}/auth/signin`, requestBody);
+    return this.http.post(`${this.apiUrl}/auth/signin`, requestBody);
   }
 
   signup(idSql:string,email:string,username:string,nationalId:string,password:string): Observable<any> {
@@ -28,22 +28,22 @@ export class UserService {
       idSql
     };
 
-    return this.http.post(`${environment.apiUrl}/auth/signup`, requestBody);
+    return this.http.post(`${this.apiUrl}/auth/signup`, requestBody);
   }
 
   emailExist(email:string): Observable<any>{
     const requestBody = {
       email
     };
-    return this.http.post(`${environment.apiUrl}/auth/exist-email`, requestBody);
+    return this.http.post(`${this.apiUrl}/auth/exist-email`, requestBody);
 
   }
 
-  NationalIdExist(nationalId:string): Observable<any>{
+  nationalIdExist(nationalId:string): Observable<any>{
     const requestBody = {
       nationalId
     };
-    return this.http.post(`${environment.apiUrl}/auth/exist-national-id`, requestBody);
+    return this.http.post(`${this.apiUrl}/auth/exist-national-id`, requestBody);
 
   }
   
