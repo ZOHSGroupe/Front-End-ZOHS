@@ -166,7 +166,7 @@
 
                       <div class="col-sm-6">
                         <label class="form-label" for="multiStepsBirthDate">Birth Date</label>
-                        <input type="date" id="multiStepsBirthDate" class="form-control" placeholder="Jackson" formControlName="birthDate"/>
+                        <input type="date" id="multiStepsBirthDate" class="form-control" placeholder="Jackson" formControlName="birthDate"  [min]="dateService.getDateNYearsAgo(70)" [max]="dateService.getDateNYearsAgo(18)"/>
                       </div>
                       <div class="col-md-12">
                         <label class="form-label" for="multiStepsAddress">Address</label>

@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.checkServerConnection.checkGatewayConnection();
+    // this.checkServerConnection.checkGatewayConnection();
     this.titleService.setTitle('Login');
   }
   // Inside your LoginComponent class

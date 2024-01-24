@@ -4,6 +4,9 @@ import { CheckServerMaintenanceProblemService } from '../../../Service/check-ser
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TokenService } from '../../../Service/token/token.service';
 import { DriverLicenseService } from '../../../driver-license/Service/driver-license.service';
+import { VehiculeService } from '../../Service/vehicule/vehicule.service';
+import { Title } from '@angular/platform-browser';
+import { DateService } from '../../../Service/date/date.service';
 
 @Component({
   selector: 'app-add-vehicule',
@@ -17,7 +20,7 @@ export class AddVehiculeComponent {
   typeAlert:string="";
   alertMessage:string="";
 
-  constructor(private readonly fileUploadService:FileUploadService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly token:TokenService,private readonly driverLicenseService : DriverLicenseService , private readonly fb: FormBuilder) { 
+  constructor(private readonly fileUploadService:FileUploadService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly token:TokenService,private readonly vehiculeService : VehiculeService , private readonly fb: FormBuilder,private readonly title:Title,protected readonly dateService:DateService) { 
     this.vehiculeForm = this.fb.group({
       marque: ['', Validators.required],
       genre: ['', Validators.required], 
@@ -41,8 +44,9 @@ export class AddVehiculeComponent {
   }
 
   ngOnInit(): void {
-    // this.checkServerConnection.checkGatewayConnection();
+    // this.checkServerConnection.checkGatewayConnection(); // IMPORTANTE
     this.token.notAuthenticatedEvent();
+    this.title.setTitle("Add Vehicule");
   }
 
 

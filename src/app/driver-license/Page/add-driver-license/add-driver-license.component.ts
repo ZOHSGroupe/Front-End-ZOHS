@@ -4,6 +4,8 @@ import { DriverLicenseService } from '../../Service/driver-license.service';
 import { CheckServerMaintenanceProblemService } from '../../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
 import { TokenService } from '../../../Service/token/token.service';
 import { FileUploadService } from '../../../Service/file-upload/file-upload.service';
+import { Title } from '@angular/platform-browser';
+import { DateService } from '../../../Service/date/date.service';
 
 @Component({
   selector: 'app-add-driver-license',
@@ -17,7 +19,7 @@ export class AddDriverLicenseComponent {
   typeAlert:string="";
   alertMessage:string="";
 
-  constructor(private readonly fileUploadService:FileUploadService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly token:TokenService,private readonly driverLicenseService : DriverLicenseService , private readonly fb: FormBuilder) { 
+  constructor(private readonly fileUploadService:FileUploadService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly token:TokenService,private readonly driverLicenseService : DriverLicenseService , private readonly fb: FormBuilder,protected readonly title:Title,protected readonly dateService:DateService) { 
     this.driverLicenceForm = this.fb.group({
       type: ['', Validators.required],
       licenseNumber: ['', Validators.required], 
@@ -31,6 +33,7 @@ export class AddDriverLicenseComponent {
   ngOnInit(): void {
     // this.checkServerConnection.checkGatewayConnection();
     this.token.notAuthenticatedEvent();
+    this.title.setTitle("Add Driver License");
   }
 
 

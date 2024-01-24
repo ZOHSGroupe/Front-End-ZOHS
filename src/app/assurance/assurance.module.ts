@@ -7,12 +7,16 @@ import { ShowAssuranceComponent } from './Page/show-assurance/show-assurance.com
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AlertComponent } from './Component/alert/alert.component';
+import { SidebarComponent } from './Component/sidebar/sidebar.component';
 
 
 @NgModule({
   declarations: [
     AddAssuranceComponent,
-    ShowAssuranceComponent
+    ShowAssuranceComponent,
+    AlertComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,

@@ -20,7 +20,7 @@ export class EmailVerificationComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.checkServerConnection.checkGatewayConnection();
+    // this.checkServerConnection.checkGatewayConnection();
   }
   resendCode(){
     // code change

@@ -43,11 +43,11 @@
                     </div>
                     <div class="col-md-6">
                       <label class="form-label" for="issueDate">Issue Date</label>
-                      <input type="date" id="issueDate" name="issueDate" class="form-control"  formControlName="issueDate"/>
+                      <input type="date" id="issueDate" name="issueDate" class="form-control"  formControlName="issueDate"  [min]="dateService.getDateNYearsAgo(5)" [max]="dateService.getCurrentDate()"/>
                     </div>
                     <div class="col-md-6">
                       <label class="form-label" for="expirationDate">Expiration Date</label>
-                      <input type="date" id="expirationDate" name="expirationDate" class="form-control" formControlName="expirationDate" />
+                      <input type="date" id="expirationDate" name="expirationDate" class="form-control" formControlName="expirationDate"  [min]="dateService.getCurrentDate()" [max]="dateService.getDateNYearsAgo(5)" />
                     </div>
                     <!-- Image Upload -->
                     <div class="col-md-12">

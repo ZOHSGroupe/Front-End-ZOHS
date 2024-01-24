@@ -5,6 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { UserService } from '../../Service/user/user.service';
 import { EmailService } from '../../../Service/email/email.service';
 import { CheckServerMaintenanceProblemService } from '../../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
+import { DateService } from '../../../Service/date/date.service';
 
 @Component({
   selector: 'app-client-registration',
@@ -26,7 +27,7 @@ export class ClientRegistrationComponent implements OnInit{
   @ViewChild('prevButton2', { static: true }) prevButton2!: ElementRef;
 
 
-  constructor(private readonly fb:FormBuilder,private readonly userService:UserService,private readonly titleService:Title,private readonly clientService:ClientService,private readonly emailService:EmailService,private readonly checkServerConnection:CheckServerMaintenanceProblemService){
+  constructor(private readonly fb:FormBuilder,private readonly userService:UserService,private readonly titleService:Title,private readonly clientService:ClientService,private readonly emailService:EmailService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,protected readonly dateService:DateService){
     this.signupForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.maxLength(50)]],
       lastname: ['', [Validators.required, Validators.maxLength(50)]],
@@ -59,7 +60,7 @@ export class ClientRegistrationComponent implements OnInit{
   // Custom Validator for image files
   
   ngOnInit(): void {
-    this.checkServerConnection.checkGatewayConnection();
+    // this.checkServerConnection.checkGatewayConnection();
     this.titleService.setTitle('User Registration');
   }
   signUp():boolean{

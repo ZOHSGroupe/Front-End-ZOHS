@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
 import { LoginComponent } from './Page/login/login.component';
 import { EmailVerificationComponent } from './Page/email-verification/email-verification.component';
 import { ClientRegistrationComponent } from './Page/client-registration/client-registration.component';
@@ -23,8 +22,8 @@ import { AlertComponent } from './Component/alert/alert.component';
   ],
   imports: [
     CommonModule,
-    AuthenticationRoutingModule,
     RouterModule,
+    AuthenticationRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule
