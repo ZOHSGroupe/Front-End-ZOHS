@@ -4,8 +4,15 @@ import { ClientRegistrationComponent } from './Page/client-registration/client-r
 import { LoginComponent } from './Page/login/login.component';
 import { ForgotPasswordComponent } from './Page/forgot-password/forgot-password.component';
 import { EmailVerificationComponent } from './Page/email-verification/email-verification.component';
+import { HomeComponent } from './Page/home/home.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
+  {
+    path: 'home',
+    pathMatch: 'full',
+    redirectTo: '',
+  },
   { path: 'client-registration', component: ClientRegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },

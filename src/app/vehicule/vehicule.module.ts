@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AlertComponent } from './Component/alert/alert.component';
 import { SidebarComponent } from './Component/sidebar/sidebar.component';
+import { NavBarComponent } from './Component/nav-bar/nav-bar.component';
+import { MainTemplateComponent } from './Component/main-template/main-template.component';
 
 
 @NgModule({
@@ -17,7 +19,10 @@ import { SidebarComponent } from './Component/sidebar/sidebar.component';
     AddVehiculeComponent,
     ShowVehiculeComponent,
     AlertComponent,
-    SidebarComponent
+    SidebarComponent,
+    NavBarComponent,
+    AlertComponent,
+    MainTemplateComponent
   ],
   imports: [
     CommonModule,

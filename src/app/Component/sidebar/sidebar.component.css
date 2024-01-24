@@ -1,0 +1,19 @@
+
+
+#layout-menu {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .menu-inner {
+    padding: 16px; /* Adjust the padding as needed */
+    list-style: none;
+  }
+
+  .menu-item {
+    margin-bottom: 8px; /* Adjust the margin between menu items as needed */
+  }

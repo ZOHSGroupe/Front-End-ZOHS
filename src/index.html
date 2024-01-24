@@ -67,13 +67,15 @@
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="./assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="assets/vendor/libs/typeahead-js/typeahead.css" />
+
+    <link rel="stylesheet" href="./assets/vendor/libs/typeahead-js/typeahead.css" />
     <!-- Vendor -->
 <link rel="stylesheet" href="./assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
 
     <!-- Page CSS -->
     <!-- Page -->
-<link rel="stylesheet" href="./assets/vendor/css/pages/page-auth.css">
+<link rel="stylesheet" href="./assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css">
+
     <!-- Helpers -->
     <script type="text/javascript" src="./assets/vendor/js/helpers.js"></script>
 
@@ -84,7 +86,6 @@
     <script type="text/javascript" src="./assets/js/config.js"></script>
 
 <!-- Boxicons CDN Link -->
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 
 
@@ -149,6 +150,13 @@
 
 
   <!-- Page JS -->
-  <script type="text/javascript" src="./assets/js/pages-auth-multisteps.js"></script>
+  <script type="text/javascript" src="./assets/js/tables-datatables-extensions.js"></script>
+
+  <script>
+    // Check selected custom option
+    window.Helpers.initCustomOptionCheck();
+    </script>
+  
+  
 </body>
 </html>

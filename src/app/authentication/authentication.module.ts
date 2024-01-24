@@ -8,9 +8,19 @@ import { EmailVerificationComponent } from './Page/email-verification/email-veri
 import { ClientRegistrationComponent } from './Page/client-registration/client-registration.component';
 import { ForgotPasswordComponent } from './Page/forgot-password/forgot-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './Component/alert/alert.component';
+import { MainTemplateComponent } from './Component/main-template/main-template.component';
+import { NavBarComponent } from './Component/nav-bar/nav-bar.component';
+import { SideBarComponent } from './Component/side-bar/side-bar.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HomeComponent } from './Page/home/home.component';
 
+// HttpLoaderFactory to load module-specific translation files
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -18,7 +28,11 @@ import { AlertComponent } from './Component/alert/alert.component';
     EmailVerificationComponent,
     ClientRegistrationComponent,
     ForgotPasswordComponent,
-    AlertComponent
+    AlertComponent,
+    MainTemplateComponent,
+    NavBarComponent,
+    SideBarComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

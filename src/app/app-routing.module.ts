@@ -12,6 +12,7 @@ import { DriverLicenseModule } from './driver-license/driver-license.module';
 import { AssuranceModule } from './assurance/assurance.module';
 import { VehiculeModule } from './vehicule/vehicule.module';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { AdminModule } from './admin/admin.module';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'assurance', loadChildren: () => AssuranceModule },
   { path: 'vehicule', loadChildren: () => VehiculeModule },
   { path: 'auth' , loadChildren: () => AuthenticationModule },
+  { path: 'admin' , loadChildren: () => AdminModule },
 
   { path: '**', component: NotFoundComponent },
 

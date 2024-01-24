@@ -11,6 +11,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AlertComponent } from './Component/alert/alert.component';
 import { SidebarComponent } from './Component/sidebar/sidebar.component';
+import { MainTemplateComponent } from './Component/main-template/main-template.component';
+import { NavBarComponent } from './Component/nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { SidebarComponent } from './Component/sidebar/sidebar.component';
     AddDriverLicenseComponent,
     ShowDriverLicenseComponent,
     AlertComponent,
-    SidebarComponent
+    SidebarComponent,
+    MainTemplateComponent,
+    NavBarComponent
   ],
   imports: [
     CommonModule,

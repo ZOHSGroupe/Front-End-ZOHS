@@ -10,7 +10,8 @@ import { DateService } from '../../../Service/date/date.service';
 @Component({
   selector: 'app-client-registration',
   templateUrl: './client-registration.component.html',
-  styleUrl: './client-registration.component.css'
+  styleUrl: './client-registration.component.css',
+
 })
 export class ClientRegistrationComponent implements OnInit{
   signupForm: FormGroup;
@@ -22,6 +23,7 @@ export class ClientRegistrationComponent implements OnInit{
   alertMessage: string = '';
   typeAlert:string='';
   passwordValid:boolean=false;
+  sendRelatedEmails:boolean=false;
   codeVerificationEmailNumber:number=0;
   @ViewChild('prevButton1', { static: true }) prevButton1!: ElementRef;
   @ViewChild('prevButton2', { static: true }) prevButton2!: ElementRef;
@@ -212,7 +214,9 @@ export class ClientRegistrationComponent implements OnInit{
 
 
   
+  onCheckboxEmailChange():void{
 
+  }
   openAlert(message: string,type:string): void {
     this.alertMessage = message;
     this.typeAlert=type;

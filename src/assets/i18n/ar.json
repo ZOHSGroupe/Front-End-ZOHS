@@ -1,0 +1,59 @@
+{   
+    "dir":"rtl",
+    "module":{
+        "app":{
+            "Page":{
+
+            },
+            "Component":{
+                
+            }
+        },
+        "assurance":{
+            "Page":{
+
+            },
+            "Component":{
+
+            }
+        },
+        "vehicule":{
+            "Page":{
+
+            },
+            "Component":{
+                
+            }
+        },
+        "driver_license":{
+            "Page":{
+
+            },
+            "Component":{
+                
+            }
+        },
+        "authentication":{
+            "Page":{
+                "client_registration":{
+                    "welcomeMessage": "مرحبًا في ZOHS! 👋",
+                    "signInButtonText": "تسجيل الدخول",
+                    "newOnPlatform": "جديد على منصتنا؟",
+                    "createAccount": "إنشاء حساب"
+                },
+                "login":{
+
+                },
+                "forgot_password":{
+
+                },
+                "email_verification":{
+
+                }
+            },
+            "Component":{
+                
+            }
+        }
+    }
+}

@@ -1,277 +1,203 @@
 
+<app-main-template-auth >
+  <div class="registration">
 
+<!-- FormValidation -->
+<div class="col-12">
+  <div class="card">
+    <h5 class="card-header">Client Registration</h5>
+    <div class="card-body">
+      @if(codeEmailVerification!=""){
+        <form  [formGroup]="signupForm" id="formValidationExamples" class="row g-3" >
 
-<div class="authentication-wrapper authentication-cover">
-    <div class="authentication-inner row m-0">
-      
-      <!-- Left Text -->
-      <div class="d-none d-lg-flex col-lg-4 align-items-center justify-content-end p-5 pe-0">
-        <div class="w-px-400">
-          <img src="../../../assets/img/illustrations/create-account-light.png" class="img-fluid scaleX-n1-rtl" alt="multi-steps" height="700" data-app-light-img="illustrations/create-account-light.png" data-app-dark-img="illustrations/create-account-dark.html">
-        </div>
-      </div>
-      <!-- /Left Text -->
+          <!-- Account Details -->
   
-      <!--  Multi Steps Registration -->
-      <div class="d-flex col-lg-8 authentication-bg p-sm-5 p-3 justify-content-center">
-        <div class="d-flex flex-column w-px-700">
-          <!-- Logo and Language -->
-
-      <!-- /Logo and Language -->
-
-      <app-alert-auth
-      *ngIf="showAlert"
-      [type]="typeAlert"
-      [message]="alertMessage"
-      (closed)="onCloseAlert()"
-    ></app-alert-auth>
-    
-          <div class="my-auto">
-            <div id="multiStepsValidation" class="bs-stepper shadow-none">
-              <div class="bs-stepper-header">
-                <div class="step" data-target="#accountDetailsValidation">
-                  <button type="button" class="step-trigger">
-                    <span class="bs-stepper-circle" >
-                      <i class="bx bx-home"></i>
-                    </span>                  
-                    <span class="bs-stepper-label">
-                      <span class="bs-stepper-title">Account</span>
-                      <span class="bs-stepper-subtitle">Account Details</span>
-                    </span>
-                  </button>
-                </div>
-                <div class="line" ></div>
-                <div class="step" data-target="#personalInfoValidation">
-                  <button type="button" class="step-trigger">
-                    <span class="bs-stepper-circle">
-                      <i class="bx bx-user"></i>
-                    </span>
-                    <span class="bs-stepper-label">
-                      <span class="bs-stepper-title">Personal</span>
-                      <span class="bs-stepper-subtitle">Enter Information</span>
-                    </span>
-                  </button>
-                </div>
-                <div class="line"></div>
-                <div class="step" data-target="#billingLinksValidation" style="color: #EE1C25;">
-                  <button type="button" class="step-trigger">
-                    <span class="bs-stepper-circle">
-                      <!-- <i class="bx bx-email"></i> -->
-                      <i class="far fa-envelope"></i>
-                    </span>
-                    <span class="bs-stepper-label">
-                      <span class="bs-stepper-title">Email</span>
-                      <span class="bs-stepper-subtitle">Email verification</span>
-                    </span>
-                  </button>
-                </div>
-              </div>
-              <div class="bs-stepper-content pt-4">
-                <form [formGroup]="signupForm" id="multiStepsForm" ngNoForm>
-                  <!-- Account Details -->
-                  <div id="accountDetailsValidation" class="content">
-                    <div class="content-header mb-3">
-                      <h4>Account Information</h4>
-                      <span>Enter Your Account Details</span>
-                    </div>
-                    <div class="row g-3">
-                      <div class="col-sm-6">
-                        <label class="form-label" for="multiStepsUsername">Username</label>
-                        <input type="text" name="multiStepsUsername" id="multiStepsUsername" class="form-control" placeholder="john doe" formControlName="username" />
-                      </div>
-                      <div class="col-sm-6">
-                        <label class="form-label" for="multiStepsEmail">Email</label>
-                        <input type="email" name="multiStepsEmail" id="multiStepsEmail" class="form-control" placeholder="john.doe@email.com" aria-label="john.doe" formControlName="email" />
-                      </div>
-                      <div class="col-sm-6 form-password-toggle">
-                        <label class="form-label" for="multiStepsPass">Password</label>
-                        <div class="input-group input-group-merge">
-                            <input type="password" id="multiStepsPass" name="multiStepsPass" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="multiStepsPass2" formControlName="password" minlength="8" (input)="checkPasswordValidity()" />
-                            <span class="input-group-text cursor-pointer" id="multiStepsPass2"><i class="bx bx-hide"></i></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 form-password-toggle">
-                        <label class="form-label" for="multiStepsConfirmPass">Confirm Password</label>
-                        <div class="input-group input-group-merge">
-                            <input type="password" id="multiStepsConfirmPass" name="multiStepsConfirmPass" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="multiStepsConfirmPass2" />
-                            <span class="input-group-text cursor-pointer" id="multiStepsConfirmPass2"><i class="bx bx-hide"></i></span>
-                        </div>
-                    </div>
-                    
-                      <!-- <div class="col-md-12">
-                        <label class="form-label" for="multiStepsURL">Profile Link</label>
-                        <input type="text" name="multiStepsURL" id="multiStepsURL" class="form-control" placeholder="johndoe/profile" aria-label="johndoe" />
-                      </div> -->
-                      <div class="col-12 d-flex justify-content-between mt-4">
-                        <button  class="btn btn-label-secondary btn-prev btn-danger" disabled style="background-color: #EE1C25;"> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
-                          <span class="d-sm-inline-block d-none" >Previous</span>
-                        </button>
-                        <button [disabled]="!passwordValid"  class="btn btn-danger btn-next" style="background-color: #EE1C25;" (click)="OnSubmitAccountForm()"> <span class="d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="bx bx-chevron-right bx-sm me-sm-n2"></i></button>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Personal Info -->
-                  <div id="personalInfoValidation" class="content">
-                    <div class="content-header mb-3">
-                      <h4>Personal Information</h4>
-                      <span>Enter Your Personal Information</span>
-                    </div>
-                    <div class="row g-3">
-                      <div class="col-sm-6">
-                        <label class="form-label" for="multiStepsFirstName">First Name</label>
-                        <input type="text" id="multiStepsFirstName" name="multiStepsFirstName" class="form-control" placeholder="John" formControlName="firstname"/>
-                      </div>
-                      <div class="col-sm-6">
-                        <label class="form-label" for="multiStepsLastName">Last Name</label>
-                        <input type="text" id="multiStepsLastName" name="multiStepsLastName" class="form-control" placeholder="Doe" formControlName="lastname"/>
-                      </div>
-                      <div class="col-sm-6">
-                        <label class="form-label" for="multiStepsMobile">Mobile</label>
-                        <div class="input-group input-group-merge">
-                          <span class="input-group-text">MR (+212)</span>
-                          <input type="text" id="multiStepsMobile" name="multiStepsMobile" class="form-control multi-steps-mobile" [maxlength]="9" [minLength]="9" placeholder="666666666" formControlName="tel"/>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <label class="form-label" for="multiStepsPincode">Nationalite</label>
-                        <input type="text" id="multiStepsPincode" name="multiStepsPincode" class="form-control" placeholder="Nationality" maxlength="15" formControlName="nationality"/>
-                      </div>
-                      <div class="col-sm-6">
-                        <label class="form-label" for="multiStepsState">Gender</label>
-                        <select id="multiStepsState" class="select2 form-select" data-allow-clear="true" formControlName="gender">
-                          <option value="" disabled>Gender</option>
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
-                          <option value="Other">Other</option>
-                        </select>
-                      </div>
-                      <!-- <div class="col-sm-6">
-                        <label class="form-label" for="multiStepsPincode">City</label>
-                        <input type="text" id="multiStepsPincode" name="multiStepsPincode" class="form-control multi-steps-pincode" placeholder="Postal Code" maxlength="15" formControlName="city"/>
-                      </div> -->
-                      <div class="col-sm-6">
-                        <label class="form-label" for="multiStepsState">City</label>
-                        <select id="multiStepsCity" class="select2 form-select" data-allow-clear="true" formControlName="city">
-                          <option value="" disabled>Select</option>
-                          <option value="AL">Alabama</option>
-                          <option value="AK">Alaska</option>
-                          <option value="AZ">Arizona</option>
-                        </select>
-                      </div>
-
-                      <div class="col-sm-6">
-                        <label class="form-label" for="multiStepsArea">National ID</label>
-                        <input type="text" id="multiStepsArea" name="multiStepsArea" class="form-control" placeholder="Area/Landmark" formControlName="nationalId"/>
-                      </div>
-
-                      <div class="col-sm-6">
-                        <label class="form-label" for="multiStepsBirthDate">Birth Date</label>
-                        <input type="date" id="multiStepsBirthDate" class="form-control" placeholder="Jackson" formControlName="birthDate"  [min]="dateService.getDateNYearsAgo(70)" [max]="dateService.getDateNYearsAgo(18)"/>
-                      </div>
-                      <div class="col-md-12">
-                        <label class="form-label" for="multiStepsAddress">Address</label>
-                        <input type="text" id="multiStepsAddress" name="multiStepsAddress" class="form-control" placeholder="Address" formControlName="address"/>
-                      </div>
-                      
-                      
-                      <!-- Image Upload -->
-                        <div class="col-md-12">
-                            <label class="form-label" for="multiStepsImage">Front Nationale Card Image</label>
-                            <input type="file" id="multiStepsImage1" name="multiStepsImage" class="form-control" accept="image/png, image/jpeg, image/jpg" formControlName="frontCardNationaleImg" />
-                        </div>
-                        <!-- Image Upload -->
-                        <div class="col-md-12">
-                            <label class="form-label" for="multiStepsImage">Back Nationale Card Image</label>
-                            <input type="file" id="multiStepsImage2" name="multiStepsImage" class="form-control" accept="image/png, image/jpeg, image/jpg"  formControlName="backCardNationaleImg" />
-                        </div>
-                        <!-- Image Upload -->
-                        <div class="col-md-12">
-                          <label class="form-label" for="multiStepsImage">Your Image</label>
-                          <input type="file" id="multiStepsImage3" name="multiStepsImage" class="form-control" accept="image/png, image/jpeg, image/jpg" formControlName="clientImg"/>
-                      </div>
-
-
-                      <div class="col-12 d-flex justify-content-between mt-4">
-                        <button #prevButton1 class="btn btn-danger btn-prev " style="background-color: #EE1C25;"> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
-                          <span class="d-sm-inline-block d-none" >Previous</span>
-                        </button>
-                        <button class="btn btn-danger btn-next" style="background-color: #EE1C25;" (click)="OnSubmitPersonalForm()"> <span class="d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="bx bx-chevron-right bx-sm me-sm-n2"></i></button>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Billing Links -->
-                  <div id="billingLinksValidation" class="content">
-                    <div class="content-header mb-3">
-                      <h4>Email Verification 💬</h4>
-                      <p class="text-start mb-4">
-                         We sent a verification code to your email. Enter the code from the mobile in the field below.
-                        <span class="fw-bold d-block mt-2">{{signupForm.value.email}}</span>
-                      </p>
-                    </div>
-
-                    
-                    <!-- Credit Card Details -->
-                    <div [formGroup]="codeForm" class="row g-3">
-                        <div id="twoStepsForm" >
-                            <div class="mb-3">
-                              <div class="auth-input-wrapper d-flex align-items-center justify-content-sm-between numeral-mask-wrapper">
-                                <input formControlName="digit1" id="digit1" (input)="onDigitInput(1)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1" autofocus>
-                                <input formControlName="digit2" id="digit2" (input)="onDigitInput(2)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
-                                <input formControlName="digit3" id="digit3" (input)="onDigitInput(3)"type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
-                                <input formControlName="digit4" id="digit4" (input)="onDigitInput(4)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
-                                <input formControlName="digit5" id="digit5" (input)="onDigitInput(5)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
-                                <input formControlName="digit6" id="digit6" (input)="onDigitInput(6)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
-                              </div>
-                              <!-- Create a hidden field which is combined by 3 fields above -->
-                              <input type="hidden" name="otp" />
-                            </div>
-                            <div class="text-center">Didn't get the code?
-                              <a routerLink="/auth/client-registration" (click)="sendEmailVerificationCode()">
-                                Resend
-                              </a>
-                            </div>
-                        </div>
-                      <div class="col-12 d-flex justify-content-between mt-4">
-                        <button #prevButton2 class="btn btn-danger btn-prev " style="background-color: #EE1C25;"> <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
-                          <span class="d-sm-inline-block d-none" >Previous</span>
-                        </button>
-                        <button type="button" class="btn btn-success btn-next" (click)="onSubmit($event)">Submit</button>
-                      </div>
-                    </div>
-                    <!--/ Credit Card Details -->
-                  </div>
-                </form>
-
-                <div class="divider my-4">
-                  <div class="divider-text">or</div>
-                </div>
-                <div class="text-center">
-                  <a routerLink="/auth/login" class="d-flex align-items-center justify-content-center">
-                    <i class="bx bx-log-in scaleX-n1-rtl"></i>
-                    &nbsp;&nbsp;Back to login
-                  </a>
-                </div>
-                <div class="text-center">
-                  <a routerLink="/" class="d-flex align-items-center justify-content-center">
-                    <i class="bx bx-home scaleX-n1-rtl"></i>
-                    &nbsp;&nbsp;Back to home
-                  </a>
-                </div>
-                
-              </div>
+          <div class="col-12">
+            <h6 class="fw-normal">1. Account Details</h6>
+            <hr class="mt-0" />
+          </div>
+  
+  
+          <div class="col-sm-6">
+            <label class="form-label" for="multiStepsUsername">Username</label>
+            <input type="text" name="multiStepsUsername" id="multiStepsUsername" class="form-control" placeholder="john doe" formControlName="username" />
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label" for="multiStepsEmail">Email</label>
+            <input type="email" name="multiStepsEmail" id="multiStepsEmail" class="form-control" placeholder="john.doe@email.com" aria-label="john.doe" formControlName="email" />
+          </div>
+          <div class="col-sm-6 form-password-toggle">
+            <label class="form-label" for="multiStepsPass">Password</label>
+            <div class="input-group input-group-merge">
+                <input type="password" id="multiStepsPass" name="multiStepsPass" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="multiStepsPass2" formControlName="password" minlength="8" (input)="checkPasswordValidity()" />
+                <span class="input-group-text cursor-pointer" id="multiStepsPass2"><i class="fas fa-eye-slash"></i>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-6 form-password-toggle">
+            <label class="form-label" for="multiStepsConfirmPass">Confirm Password</label>
+            <div class="input-group input-group-merge">
+                <input type="password" id="multiStepsConfirmPass" name="multiStepsConfirmPass" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="multiStepsConfirmPass2" />
+                <span class="input-group-text cursor-pointer" id="multiStepsConfirmPass2"><i class="fas fa-eye-slash"></i>
+                </span>
+            </div>
+        </div>
+  
+  
+          <!-- Personal Info -->
+  
+          <div class="col-12">
+            <h6 class="mt-2 fw-normal">2. Personal Info</h6>
+            <hr class="mt-0" />
+          </div>
+  
+          <div class="col-sm-6">
+            <label class="form-label" for="multiStepsFirstName">First Name</label>
+            <input type="text" id="multiStepsFirstName" name="multiStepsFirstName" class="form-control" placeholder="John" formControlName="firstname"/>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label" for="multiStepsLastName">Last Name</label>
+            <input type="text" id="multiStepsLastName" name="multiStepsLastName" class="form-control" placeholder="Doe" formControlName="lastname"/>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label" for="multiStepsMobile">Mobile</label>
+            <div class="input-group input-group-merge">
+              <span class="input-group-text">MR (+212)</span>
+              <input type="text" id="multiStepsMobile" name="multiStepsMobile" class="form-control multi-steps-mobile" [maxlength]="9" [minLength]="9" placeholder="666666666" formControlName="tel"/>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- / Multi Steps Registration -->
-      
-    </div>
-  </div>
+          <div class="col-sm-6">
+            <label class="form-label" for="multiStepsPincode">Nationalite</label>
+            <input type="text" id="multiStepsPincode" name="multiStepsPincode" class="form-control" placeholder="Nationality" maxlength="15" formControlName="nationality"/>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label" for="multiStepsState">Gender</label>
+            <select id="multiStepsState" class="select2 form-select" data-allow-clear="true" formControlName="gender">
+              <option value="" disabled>Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <!-- <div class="col-sm-6">
+            <label class="form-label" for="multiStepsPincode">City</label>
+            <input type="text" id="multiStepsPincode" name="multiStepsPincode" class="form-control multi-steps-pincode" placeholder="Postal Code" maxlength="15" formControlName="city"/>
+          </div> -->
+          <div class="col-sm-6">
+            <label class="form-label" for="multiStepsState">City</label>
+            <select id="multiStepsCity" class="select2 form-select" data-allow-clear="true" formControlName="city">
+              <option value="" disabled>Select</option>
+              <option value="AL">Alabama</option>
+              <option value="AK">Alaska</option>
+              <option value="AZ">Arizona</option>
+            </select>
+          </div>
   
-  <script>
-  // Check selected custom option
-  window.Helpers.initCustomOptionCheck();
-  </script>
+          <div class="col-sm-6">
+            <label class="form-label" for="multiStepsArea">National ID</label>
+            <input type="text" id="multiStepsArea" name="multiStepsArea" class="form-control" placeholder="Area/Landmark" formControlName="nationalId"/>
+          </div>
+  
+          <div class="col-sm-6">
+            <label class="form-label" for="multiStepsBirthDate">Birth Date</label>
+            <input type="date" id="multiStepsBirthDate" class="form-control" placeholder="Jackson" formControlName="birthDate"  [min]="dateService.getDateNYearsAgo(70)" [max]="dateService.getDateNYearsAgo(18)"/>
+          </div>
+          <div class="col-md-12">
+            <label class="form-label" for="multiStepsAddress">Address</label>
+            <input type="text" id="multiStepsAddress" name="multiStepsAddress" class="form-control" placeholder="Address" formControlName="address"/>
+          </div>
+          
+          
+          <!-- Image Upload -->
+            <div class="col-md-12">
+                <label class="form-label" for="multiStepsImage">Front Nationale Card Image</label>
+                <input type="file" id="multiStepsImage1" name="multiStepsImage" class="form-control" accept="image/png, image/jpeg, image/jpg" formControlName="frontCardNationaleImg" />
+            </div>
+            <!-- Image Upload -->
+            <div class="col-md-12">
+                <label class="form-label" for="multiStepsImage">Back Nationale Card Image</label>
+                <input type="file" id="multiStepsImage2" name="multiStepsImage" class="form-control" accept="image/png, image/jpeg, image/jpg"  formControlName="backCardNationaleImg" />
+            </div>
+            <!-- Image Upload -->
+            <div class="col-md-12">
+              <label class="form-label" for="multiStepsImage">Your Image</label>
+              <input type="file" id="multiStepsImage3" name="multiStepsImage" class="form-control" accept="image/png, image/jpeg, image/jpg" formControlName="clientImg"/>
+          </div>
+  
+  
+          <!-- Choose Your Plan -->
+  
+          <div class="col-12">
+            <h6 class="mt-2 fw-normal">3. Choose Your Plan</h6>
+            <hr class="mt-0" />
+          </div>
+          <div [formGroup]="codeForm" class="row g-3">
+            <div id="twoStepsForm" >
+                <div class="mb-3">
+                  <div class="auth-input-wrapper d-flex align-items-center justify-content-sm-between numeral-mask-wrapper">
+                    <input formControlName="digit1" id="digit1" (input)="onDigitInput(1)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1" autofocus>
+                    <input formControlName="digit2" id="digit2" (input)="onDigitInput(2)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
+                    <input formControlName="digit3" id="digit3" (input)="onDigitInput(3)"type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
+                    <input formControlName="digit4" id="digit4" (input)="onDigitInput(4)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
+                    <input formControlName="digit5" id="digit5" (input)="onDigitInput(5)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
+                    <input formControlName="digit6" id="digit6" (input)="onDigitInput(6)" type="text" class="form-control auth-input h-px-50 text-center numeral-mask text-center h-px-50 mx-1 my-2" maxlength="1">
+                  </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-12">
+              <label class="switch switch-primary">
+                <input type="checkbox" class="switch-input" name="formValidationSwitch" [(ngModel)]="sendRelatedEmails" (change)="onCheckboxEmailChange()" />
+                <span class="switch-toggle-slider">
+                  <span class="switch-on"></span>
+                  <span class="switch-off"></span>
+                </span>
+                <span class="switch-label">Send me related emails</span>
+              </label>
+            </div>
+            
+          <div class="col-12">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="formValidationCheckbox" name="formValidationCheckbox" />
+              <label class="form-check-label" for="formValidationCheckbox">Agree to our terms and conditions</label>
+            </div>
+          </div>
+          <div class="col-12">
+            <button (click)="onSubmit($event)" name="submitButton" class="btn btn-danger">Submit</button>
+          </div>
+          <div class="divider my-4">
+            <div class="divider-text">or</div>
+          </div>
+          <div class="text-center">
+            <a routerLink="/auth/login" class="d-flex align-items-center justify-content-center">
+              <i class="bx bx-log-in scaleX-n1-rtl"></i>
+              &nbsp;&nbsp;Back to login
+            </a>
+          </div>
+          <div class="text-center">
+            <a routerLink="/" class="d-flex align-items-center justify-content-center">
+              <i class="bx bx-home scaleX-n1-rtl"></i>
+              &nbsp;&nbsp;Back to home
+            </a>
+          </div>
+        </form>
+     
+      }@else {
+
+      }
+       </div>
+  </div>
+</div>
+<!-- /FormValidation -->
+
+</div>
+
+</app-main-template-auth>
+
+
+  
+
+
 
 
 

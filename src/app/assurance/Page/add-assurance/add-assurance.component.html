@@ -1,62 +1,62 @@
-<div class="authentication-wrapper authentication-cover">
-    <app-sidebar-assuranxe />
-      <div class="authentication-inner row m-0">
-        <!-- Left Text -->
-        <div class="d-none d-lg-flex col-lg-4 align-items-center justify-content-end p-5 pe-0">
-          <div class="w-px-400">
-            <img src="../../../../assets/img/illustrations/Drive11.png" class="img-fluid scaleX-n1-rtl" alt="multi-steps" height="700" >
-          </div>
-        </div>
-        <!-- /Left Text -->
-    
-        <!-- Single Step Registration -->
-        <div class="d-flex col-lg-8 authentication-bg p-sm-5 p-3 justify-content-center">
-          <div class="d-flex flex-column w-px-700">
-              <app-alert-assurance
-              *ngIf="showAlert"
-              [type]="typeAlert"
-              [message]="alertMessage"
-              (closed)="onCloseAlert()"
-              />
-            <div class="my-auto">
-              <div class="content pt-4">
-                <form [formGroup]="assuranceForm" id="singleStepForm" ngNoForm>
-                  <!-- Account Details -->
-                  <div>
-                    <div class="content-header mb-3">
-                      <h4>Insurance Information</h4>
-                      <span>Enter Your Insurance Information</span>
-                    </div>
-                    <div class="row g-3">
-                      <div class="col-md-6">
-                        <label class="form-label" for="licenseType">Insurance Type</label>
-                        <select id="licenseType" class="form-select" formControlName="type">
-                          <option value="">Select</option>
-                          <option value="Ouail">Ouail</option>
-                          <option value="Nizar">Nizar</option>
-                          <!-- Add appropriate options according to your model -->
-                        </select>
-                      </div>
-                      
-    
-                      <div class="col-12 d-flex justify-content-between mt-4">
-                        <button class="btn btn-danger" style="background-color: #EE1C25;" (click)="onSubmit()">Submit</button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-    
-              
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- / Single Step Registration -->
+
+
+<app-main-template-assurance>
+
+  <div class="authentication-inner row m-0">
+    <!-- Left Text -->
+    <div class="d-none d-lg-flex col-lg-4 align-items-center justify-content-end p-5 pe-0">
+      <div class="w-px-400">
+        <img src="../../../../assets/img/illustrations/Drive11.png" class="img-fluid scaleX-n1-rtl" alt="multi-steps" height="700" >
       </div>
     </div>
-    
-    <script>
-      // Check selected custom option
-      window.Helpers.initCustomOptionCheck();
-    </script>
-    
+    <!-- /Left Text -->
+
+    <!-- Single Step Registration -->
+    <div class="d-flex col-lg-8 authentication-bg p-sm-5 p-3 justify-content-center">
+      <div class="d-flex flex-column w-px-700">
+          <app-alert-assurance
+          *ngIf="showAlert"
+          [type]="typeAlert"
+          [message]="alertMessage"
+          (closed)="onCloseAlert()"
+          />
+        <div class="my-auto">
+          <div class="content pt-4">
+            <form [formGroup]="assuranceForm" id="singleStepForm" ngNoForm>
+              <!-- Account Details -->
+              <div>
+                <div class="content-header mb-3">
+                  <h4>Insurance Information</h4>
+                  <span>Enter Your Insurance Information</span>
+                </div>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="licenseType">Insurance Type</label>
+                    <select id="licenseType" class="form-select" formControlName="type">
+                      <option value="">Select</option>
+                      <option value="Ouail">Ouail</option>
+                      <option value="Nizar">Nizar</option>
+                      <!-- Add appropriate options according to your model -->
+                    </select>
+                  </div>
+                  
+
+                  <div class="col-12 d-flex justify-content-between mt-4">
+                    <button class="btn btn-danger" style="background-color: #EE1C25;" (click)="onSubmit()">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / Single Step Registration -->
+  </div>
+
+</app-main-template-assurance>
+
+
+

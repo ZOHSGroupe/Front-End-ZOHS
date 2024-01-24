@@ -1,31 +1,5 @@
-/* Override Bootstrap stepper colors */
-.bs-stepper .step .bs-stepper-circle{
-    background-color: #EE1C25;
-}
-
-.bs-stepper .step .bs-stepper-circle i {
-    color: white; /* Set the desired color for the home icon */
-}
-
-
-
-.bs-stepper .bs-stepper-label .bs-stepper-title{
-    color: #EE1C25; /* Set the desired color for the title and subtitle */
-}
-.bs-stepper .bs-stepper-label .bs-stepper-subtitle {
-    color: black; /* Set the desired color for the title and subtitle */
-}
-
-.bs-stepper .line {
-    background-color: #EE1C25; /* Set the desired line color */
-    color: #EE1C25; /* Set the desired line color */
-}
-
-
-
-/* Override Bootstrap stepper styles for the active step */
-.bs-stepper .step.active .bs-stepper-circle {
-    background-color: #EE1C25 !important; /* Set the desired color for the active step */
-    color: #ffffff !important; /* Set the text color for the active step */
-}
-
+.registration {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  

@@ -5,6 +5,11 @@ import { ShowDriverLicenseComponent } from './Page/show-driver-license/show-driv
 
 const routes: Routes = [
   { path: '', component: ShowDriverLicenseComponent },
+  {
+    path: 'show',
+    pathMatch: 'full',
+    redirectTo: '',
+  },
   { path: 'add', component: AddDriverLicenseComponent },
   
 

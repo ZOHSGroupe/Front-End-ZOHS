@@ -1,0 +1,87 @@
+{   
+    "dir":"ltr",
+    "module":{
+        "app":{
+            "Page":{
+
+            },
+            "Component":{
+                
+            }
+        },
+        "assurance":{
+            "Page":{
+
+            },
+            "Component":{
+
+            }
+        },
+        "vehicule":{
+            "Page":{
+
+            },
+            "Component":{
+                
+            }
+        },
+        "driver_license":{
+            "Page":{
+
+            },
+            "Component":{
+                
+            }
+        },
+        "authentication":{
+            "Page":{
+                "client_registration":{
+                    "accountDetails": {
+                        "title": "1. Account Details",
+                        "username": "Username",
+                        "email": "Email",
+                        "password": "Password",
+                        "confirmPassword": "Confirm Password"
+                      },
+                      "personalInfo": {
+                        "title": "2. Personal Info",
+                        "firstName": "First Name",
+                        "lastName": "Last Name",
+                        "mobile": "Mobile",
+                        "nationality": "Nationality",
+                        "gender": "Gender",
+                        "city": "City",
+                        "nationalId": "National ID",
+                        "birthDate": "Birth Date",
+                        "address": "Address"
+                      },
+                      "imageUpload": {
+                        "frontCard": "Front National Card Image",
+                        "backCard": "Back National Card Image",
+                        "yourImage": "Your Image"
+                      },
+                      "choosePlan": {
+                        "title": "3. Choose Your Plan",
+                        "sendEmails": "Send me related emails",
+                        "termsAndConditions": "Agree to our terms and conditions",
+                        "submit": "Submit"
+                      }
+                    },
+                    "backToLogin": "Back to login",
+                    "backToHome": "Back to home"
+                },
+                "login":{
+
+                },
+                "forgot_password":{
+
+                },
+                "email_verification":{
+
+                }
+            },
+            "Component":{
+                
+            }
+        }
+}

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './show-driver-license.component.css'
 })
 export class ShowDriverLicenseComponent {
-
+  status:string="Rejected";
 }

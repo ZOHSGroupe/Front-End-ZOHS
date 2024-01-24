@@ -1,7 +1,7 @@
 import { Component,Input,Output,EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-alert',
+  selector: 'app-alert-admin',
   templateUrl: './alert.component.html',
   styleUrl: './alert.component.css'
 })
