@@ -9,12 +9,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { AlertComponent } from './Component/alert/alert.component';
+import { SidebarComponent } from './Component/sidebar/sidebar.component';
 
 
 @NgModule({
   declarations: [
     AddDriverLicenseComponent,
-    ShowDriverLicenseComponent
+    ShowDriverLicenseComponent,
+    AlertComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +26,8 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    
     ],
 
 })

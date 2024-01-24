@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddVehiculeComponent } from './Page/add-vehicule/add-vehicule.component';
 
 const routes: Routes = [
-  // { path: '', component: HomeComponent },
+   { path: 'add', component: AddVehiculeComponent },
 
 ];
 

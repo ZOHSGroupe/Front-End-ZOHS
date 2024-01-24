@@ -8,12 +8,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { AlertComponent } from './Component/alert/alert.component';
+import { SidebarComponent } from './Component/sidebar/sidebar.component';
 
 
 @NgModule({
   declarations: [
     AddVehiculeComponent,
-    ShowVehiculeComponent
+    ShowVehiculeComponent,
+    AlertComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +25,6 @@ import { BrowserModule } from '@angular/platform-browser';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule,
-    BrowserModule
   ]
 })
 export class VehiculeModule { }

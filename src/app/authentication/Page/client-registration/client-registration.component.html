@@ -19,12 +19,12 @@
 
       <!-- /Logo and Language -->
 
-      <app-alert
+      <app-alert-auth
       *ngIf="showAlert"
       [type]="typeAlert"
       [message]="alertMessage"
       (closed)="onCloseAlert()"
-    ></app-alert>
+    ></app-alert-auth>
     
           <div class="my-auto">
             <div id="multiStepsValidation" class="bs-stepper shadow-none">

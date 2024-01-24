@@ -42,7 +42,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     CommonModule,
-    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

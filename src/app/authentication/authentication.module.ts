@@ -9,8 +9,8 @@ import { EmailVerificationComponent } from './Page/email-verification/email-veri
 import { ClientRegistrationComponent } from './Page/client-registration/client-registration.component';
 import { ForgotPasswordComponent } from './Page/forgot-password/forgot-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AlertComponent } from '../Component/alert/alert.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AlertComponent } from './Component/alert/alert.component';
 
 
 @NgModule({
