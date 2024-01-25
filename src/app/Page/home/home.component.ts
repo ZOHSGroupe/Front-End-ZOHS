@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CheckServerMaintenanceProblemService } from '../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
+import { environment } from '../../environment.prod';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,10 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.checkServerConnection.checkGatewayConnection();
+    if(environment.production){
+      this.checkServerConnection.checkGatewayConnection();
+    }
+    
   }
   
 

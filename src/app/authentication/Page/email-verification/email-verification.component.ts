@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, ElementRef, ViewChildren, QueryList, Renderer2 } from '@angular/core';
 import { CheckServerMaintenanceProblemService } from '../../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
+import { environment } from '../../../environment.prod';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-email-verification',
@@ -16,11 +18,14 @@ export class EmailVerificationComponent implements OnInit{
   @Input() code:string="";
   @Input() lastPage:string="";
   digits: string[] = ['', '', '', '', '', ''];
-  constructor(private readonly checkServerConnection:CheckServerMaintenanceProblemService){
+  constructor(private readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly title:Title){
 
   }
   ngOnInit(): void {
-    // this.checkServerConnection.checkGatewayConnection();
+    if(environment.production){
+      this.checkServerConnection.checkGatewayConnection(); // IMPORTANTE
+    }
+    this.title.setTitle("Email Verification Page");
   }
   resendCode(){
     // code change

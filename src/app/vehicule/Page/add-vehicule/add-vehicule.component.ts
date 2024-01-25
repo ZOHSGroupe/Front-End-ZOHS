@@ -7,6 +7,7 @@ import { DriverLicenseService } from '../../../driver-license/Service/driver-lic
 import { VehiculeService } from '../../Service/vehicule/vehicule.service';
 import { Title } from '@angular/platform-browser';
 import { DateService } from '../../../Service/date/date.service';
+import { environment } from '../../../environment.prod';
 
 @Component({
   selector: 'app-add-vehicule',
@@ -44,8 +45,10 @@ export class AddVehiculeComponent {
   }
 
   ngOnInit(): void {
-    // this.checkServerConnection.checkGatewayConnection(); // IMPORTANTE
-    this.token.notAuthenticatedEvent();
+    if(environment.production){
+      this.checkServerConnection.checkGatewayConnection(); // IMPORTANTE
+      this.token.notAuthenticatedEvent();
+    }
     this.title.setTitle("Add Vehicule");
   }
 

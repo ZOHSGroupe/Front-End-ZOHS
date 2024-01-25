@@ -6,6 +6,7 @@ import { UserService } from '../../Service/user/user.service';
 import { EmailService } from '../../../Service/email/email.service';
 import { CheckServerMaintenanceProblemService } from '../../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
 import { DateService } from '../../../Service/date/date.service';
+import { environment } from '../../../environment.prod';
 
 @Component({
   selector: 'app-client-registration',
@@ -61,10 +62,15 @@ export class ClientRegistrationComponent implements OnInit{
 
   // Custom Validator for image files
   
-  ngOnInit(): void {
-    // this.checkServerConnection.checkGatewayConnection();
-    this.titleService.setTitle('User Registration');
-  }
+
+    ngOnInit(): void {
+      if(environment.production){
+          this.checkServerConnection.checkGatewayConnection(); // IMPORTANTE
+      }
+      this.titleService.setTitle('User Registration');
+    }
+    
+
   signUp():boolean{
     let ok:boolean=false;
     if(this.signupForm.valid){

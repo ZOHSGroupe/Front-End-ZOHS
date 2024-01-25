@@ -6,6 +6,7 @@ import { TokenService } from '../../../Service/token/token.service';
 import { FileUploadService } from '../../../Service/file-upload/file-upload.service';
 import { Title } from '@angular/platform-browser';
 import { DateService } from '../../../Service/date/date.service';
+import { environment } from '../../../environment.prod';
 
 @Component({
   selector: 'app-add-driver-license',
@@ -31,8 +32,10 @@ export class AddDriverLicenseComponent {
   }
 
   ngOnInit(): void {
-    // this.checkServerConnection.checkGatewayConnection();
-    this.token.notAuthenticatedEvent();
+    if(environment.production){
+      this.checkServerConnection.checkGatewayConnection(); // IMPORTANTE
+      this.token.notAuthenticatedEvent();
+    }
     this.title.setTitle("Add Driver License");
   }
 

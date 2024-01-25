@@ -5,6 +5,7 @@ import { TokenService } from '../../../Service/token/token.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { DateService } from '../../../Service/date/date.service';
+import { environment } from '../../../environment.prod';
 
 @Component({
   selector: 'app-add-assurance',
@@ -12,23 +13,23 @@ import { DateService } from '../../../Service/date/date.service';
   styleUrl: './add-assurance.component.css'
 })
 export class AddAssuranceComponent implements OnInit {
-  assuranceForm: FormGroup;
   clientId:string="";
   price:string="";
   showAlert:boolean=false;
   typeAlert:string="";
   alertMessage:string="";
+  isLiabilityInsurance:boolean;
+  isComprehensiveInsurance:boolean;
+  isCollisionInsurance:boolean;
+  typeAssurance:string="";
+  constructor(private readonly title:Title,private readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly tokenService:TokenService){
 
-  constructor(private readonly fileUploadService:FileUploadService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly token:TokenService, private readonly fb: FormBuilder,protected readonly title:Title,protected readonly dateService:DateService)  { 
-    this.assuranceForm = this.fb.group({
-      type: ['', Validators.required],
-      viheculeId: ['', Validators.required],
-    });
   }
-
   ngOnInit(): void {
-    // this.checkServerConnection.checkGatewayConnection();
-    this.token.notAuthenticatedEvent();
+    if(environment.production){
+      this.checkServerConnection.checkGatewayConnection(); // IMPORTANTE
+      this.tokenService.notAuthenticatedEvent();
+    }
     this.title.setTitle("Add Driver License");
   }
 
@@ -41,15 +42,10 @@ export class AddAssuranceComponent implements OnInit {
       return;
     }
     */
+    console.log("Type "+this.typeAssurance);
 
-    if (this.assuranceForm.valid) {
-      const driverLicense= this.assuranceForm.value;
-      console.log(driverLicense);
-  
-      
-    }else{
-      this.openAlert("Enter a valid values !!!","danger");
-    }
+
+    
   }
   openAlert(message: string,type:string): void {
     this.alertMessage = message;
@@ -60,5 +56,9 @@ export class AddAssuranceComponent implements OnInit {
   onCloseAlert(): void {
     this.showAlert = false;
   }
+
+  
+  
+
 }
 

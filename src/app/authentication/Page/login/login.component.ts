@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CheckServerMaintenanceProblemService } from '../../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
 import { TokenService } from '../../../Service/token/token.service';
+import { environment } from '../../../environment.prod';
 
 @Component({
   selector: 'app-login',
@@ -45,9 +46,12 @@ export class LoginComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    // this.checkServerConnection.checkGatewayConnection();
-    this.titleService.setTitle('Login');
+    if(environment.production){
+      this.checkServerConnection.checkGatewayConnection(); // IMPORTANTE
+    }
+    this.titleService.setTitle('Login Page');
   }
+  
   // Inside your LoginComponent class
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;

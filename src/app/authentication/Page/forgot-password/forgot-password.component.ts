@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CheckServerMaintenanceProblemService } from '../../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
+import { environment } from '../../../environment.prod';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-forgot-password',
@@ -7,10 +9,13 @@ import { CheckServerMaintenanceProblemService } from '../../../Service/check-ser
   styleUrl: './forgot-password.component.css'
 })
 export class ForgotPasswordComponent implements OnInit {
-  constructor(private readonly checkServerConnection:CheckServerMaintenanceProblemService){
+  constructor(private readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly title:Title){
 
   }
   ngOnInit(): void {
-    // this.checkServerConnection.checkGatewayConnection();
+    if(environment.production){
+      this.checkServerConnection.checkGatewayConnection(); // IMPORTANTE
+    }
+    this.title.setTitle("Forgot Password Page");
   }
 }
