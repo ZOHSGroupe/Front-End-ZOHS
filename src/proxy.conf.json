@@ -1,0 +1,9 @@
+{
+    "**": {
+      "target": "http://192.168.1.143:8082",
+      "secure": true,
+      "changeOrigin":true,
+      "logLevel":"debug"
+    }
+  }
+  

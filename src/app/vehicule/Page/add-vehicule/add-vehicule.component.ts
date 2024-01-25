@@ -3,11 +3,10 @@ import { FileUploadService } from '../../../Service/file-upload/file-upload.serv
 import { CheckServerMaintenanceProblemService } from '../../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TokenService } from '../../../Service/token/token.service';
-import { DriverLicenseService } from '../../../driver-license/Service/driver-license/driver-license.service';
-import { VehiculeService } from '../../Service/vehicule/vehicule.service';
 import { Title } from '@angular/platform-browser';
 import { DateService } from '../../../Service/date/date.service';
 import { environment } from '../../../environment.prod';
+import { VehiculeService } from '../../Service/vehicule/vehicule.service';
 
 @Component({
   selector: 'app-add-vehicule',

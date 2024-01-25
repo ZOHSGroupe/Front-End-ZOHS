@@ -29,7 +29,6 @@ import { NavBarComponent } from './Component/nav-bar/nav-bar.component';
     DriverLicenseRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AppRoutingModule,
     RouterModule,
     
     ],

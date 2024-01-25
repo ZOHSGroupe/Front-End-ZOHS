@@ -31,10 +31,9 @@ export class ShowDriverLicenseComponent implements OnInit{
   }
   getAllDriverLicense():void{
     this.checkServerAndAuthorization();
-    this.driverLicenseService.getAllDriverLicense().subscribe(
+    this.driverLicenseService.getAllDriverLicenseForAdmin().subscribe(
       (data) => {
         this.data=data;
-        console.log(data);
       },
       (error) => {
         this.data=null;
@@ -43,7 +42,7 @@ export class ShowDriverLicenseComponent implements OnInit{
   }
   getDriverLicenseToProcess(id:string):void{
     this.checkServerAndAuthorization();
-    this.driverLicenseService.getAllDriverLicense().subscribe(
+    this.driverLicenseService.getDriverLicenseByID(id).subscribe(
       (data) => {
         //Handle Process of prnding driver license
       },

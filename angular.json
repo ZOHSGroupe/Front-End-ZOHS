@@ -23,7 +23,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {          
-            "proxyConfig": "src/proxy.conf.json",
             "outputPath": "dist/front-end-lasto",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -71,16 +70,21 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "front-end-lasto:build:production"
             },
             "development": {
-              "buildTarget": "front-end-lasto:build:development"
+              "buildTarget": "front-end-lasto:build:development",
+              "proxyConfig":"src/proxy.conf.json"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig":"src/proxy.conf.json"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
