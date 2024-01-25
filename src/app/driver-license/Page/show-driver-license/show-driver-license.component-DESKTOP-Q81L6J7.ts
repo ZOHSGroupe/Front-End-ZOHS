@@ -28,7 +28,7 @@ export class ShowDriverLicenseComponent implements OnInit {
       return;
     }
   }
-  getAllDriverLicenseOfClient(){
+  getAllDriverLicenseOfClient():void{
     this.checkServerAndAuthorization();
     this.driverLicenseService.getAllDriverLicense().subscribe(
       (data) => {

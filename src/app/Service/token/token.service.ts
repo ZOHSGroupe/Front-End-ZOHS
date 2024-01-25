@@ -56,12 +56,13 @@ export class TokenService {
     return false;
   }
 
-  notAuthenticatedEvent(){
+  notAuthenticatedEvent():boolean{
     if (isPlatformBrowser(this.platformId)) {
       if(!this.isAuthenticated() || this.isTokenExpired()){
-        //this.router.navigate(['/not-authorized']); // !!! IMPORTANT
-        console.log('not connected with the api gateway');
+        this.router.navigate(['/not-authorized']); // !!! IMPORTANT
+        return true;
       }
     }
+    return false;
   }
 }

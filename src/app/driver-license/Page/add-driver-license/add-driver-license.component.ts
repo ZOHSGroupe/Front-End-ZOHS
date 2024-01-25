@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DriverLicenseService } from '../../Service/driver-license.service';
+import { DriverLicenseService } from '../../Service/driver-license/driver-license.service';
 import { CheckServerMaintenanceProblemService } from '../../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
 import { TokenService } from '../../../Service/token/token.service';
 import { FileUploadService } from '../../../Service/file-upload/file-upload.service';

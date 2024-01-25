@@ -12,6 +12,7 @@ import { NavBarComponent } from './Component/nav-bar/nav-bar.component';
 import { SideBarComponent } from './Component/side-bar/side-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './Page/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { HomeComponent } from './Page/home/home.component';
     AdminRoutingModule,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class AdminModule { }
