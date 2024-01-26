@@ -7,7 +7,8 @@ import { environment } from '../../../environment.prod';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl:string=environment.apiAuthUrl+"/auth";
+  private readonly apiUrl:string=((environment.production)?environment.apiUrl:(environment.development.apiAuthUrl))+"/auth"
+
   constructor(private readonly http: HttpClient) { }
   
   signin(emailOrUsername:string,password:string): Observable<any> {

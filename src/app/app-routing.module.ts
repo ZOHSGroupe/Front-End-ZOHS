@@ -13,6 +13,8 @@ import { AssuranceModule } from './assurance/assurance.module';
 import { VehiculeModule } from './vehicule/vehicule.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AdminModule } from './admin/admin.module';
+import { AboutComponent } from './Page/about/about.component';
+import { HelpComponent } from './Page/help/help.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,8 +24,9 @@ const routes: Routes = [
     redirectTo: '',
   },
   { path: 'not-authorized', component: NotAuthorizedComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'help', component: HelpComponent },
   { path: 'under-maintenance', component: UnderMaintenanceComponent },
-
 
   { path: 'driver-license', loadChildren: () => DriverLicenseModule },
   { path: 'assurance', loadChildren: () => AssuranceModule },

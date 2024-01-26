@@ -6,7 +6,7 @@ import { TokenService } from '../../../Service/token/token.service';
 import { FileUploadService } from '../../../Service/file-upload/file-upload.service';
 import { Title } from '@angular/platform-browser';
 import { DateService } from '../../../Service/date/date.service';
-import { environment } from '../../../environment.prod';
+import { environment } from '../../../environment.prod'; 
 
 @Component({
   selector: 'app-add-driver-license',
@@ -65,7 +65,7 @@ export class AddDriverLicenseComponent {
           // You may want to display an error message to the user or perform other actions here
         }
       );
-      this.fileUploadService.uploadDriverLicenseImg(driverLicense.frontCardDriverLicenseImg)
+      this.fileUploadService.uploadDriverLicenseImage(driverLicense.frontCardDriverLicenseImg)
         .subscribe(
           (response) => {
             // Handle success response

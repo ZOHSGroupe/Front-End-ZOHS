@@ -25,6 +25,11 @@ import { DriverLicenseModule } from './driver-license/driver-license.module';
 import { AssuranceModule } from './assurance/assurance.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AdminModule } from './admin/admin.module';
+import { HelpComponent } from './Page/help/help.component';
+import { AboutComponent } from './Page/about/about.component';
+import { MainTemplateComponent } from './Component/main-template/main-template.component';
+import { NavBarComponent } from './Component/nav-bar/nav-bar.component';
+import { SidebarComponent } from './Component/sidebar/sidebar.component';
 
 
 // Function to load translations
@@ -39,7 +44,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     NotFoundComponent,
     HomeComponent,
     NotAuthorizedComponent,
-    UnderMaintenanceComponent
+    UnderMaintenanceComponent,
+    HelpComponent,
+    AboutComponent,
+    MainTemplateComponent,
+    NavBarComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -73,6 +83,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     provideClientHydration(),
     provideHttpClient(withFetch()),
   ],
+  exports:[MainTemplateComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

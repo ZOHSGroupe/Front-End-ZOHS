@@ -1,0 +1,20 @@
+.layout-wrapper {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 250px; /* Adjust width as needed */
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+  
+  .content-wrapper {
+    padding: 20px;
+  }
+  
+  .content-footer {
+    /* Footer styles */
+  }
+  

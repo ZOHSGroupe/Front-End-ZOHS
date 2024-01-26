@@ -8,7 +8,8 @@ import { TokenService } from '../../../Service/token/token.service';
   providedIn: 'root'
 })
 export class VehiculeService {
-  private readonly apiUrl:string=environment.apiUrl;
+  private readonly apiUrl:string=((environment.production)?environment.apiUrl:(environment.development.apiDriverLicense))+"/vehicule"
+
   constructor(protected readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly tokenService:TokenService) { }
   getAllVehicule(){
 

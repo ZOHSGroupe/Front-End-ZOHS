@@ -7,8 +7,7 @@
   <div class="card">
     <h5 class="card-header">Client Registration</h5>
     <div class="card-body">
-      @if(codeEmailVerification!=""){
-        <form  [formGroup]="signupForm" id="formValidationExamples" class="row g-3" >
+        <div  [formGroup]="signupForm" id="formValidationExamples" class="row g-3" >
 
           <!-- Account Details -->
   
@@ -147,7 +146,7 @@
             </div>
             <div class="col-12">
               <label class="switch switch-primary">
-                <input type="checkbox" class="switch-input" name="formValidationSwitch" [(ngModel)]="sendRelatedEmails" (change)="onCheckboxEmailChange()" />
+                <input [disabled]="!signupForm.valid" type="checkbox" class="switch-input" name="formValidationSwitch" [(ngModel)]="sendRelatedEmails"  [ngModelOptions]="{standalone: true}" (change)="onCheckboxEmailChange()" />
                 <span class="switch-toggle-slider">
                   <span class="switch-on"></span>
                   <span class="switch-off"></span>
@@ -158,12 +157,12 @@
             
           <div class="col-12">
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="formValidationCheckbox" name="formValidationCheckbox" />
+              <input type="checkbox" class="form-check-input" id="formValidationCheckbox" name="formValidationCheckbox" formControlName="termsAndConditions"/>
               <label class="form-check-label" for="formValidationCheckbox">Agree to our terms and conditions</label>
             </div>
           </div>
           <div class="col-12">
-            <button (click)="onSubmit($event)" name="submitButton" class="btn btn-danger">Submit</button>
+            <button [disabled]="!signupForm.valid" (click)="onSubmit($event)" name="submitButton" class="btn btn-danger">Submit</button>
           </div>
           <div class="divider my-4">
             <div class="divider-text">or</div>
@@ -180,11 +179,8 @@
               &nbsp;&nbsp;Back to home
             </a>
           </div>
-        </form>
-     
-      }@else {
+        </div>
 
-      }
        </div>
   </div>
 </div>

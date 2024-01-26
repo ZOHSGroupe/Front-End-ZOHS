@@ -4,7 +4,6 @@ import { Title } from '@angular/platform-browser';
 import { TokenService } from '../../../Service/token/token.service';
 import { environment } from '../../../environment.prod';
 import { DriverLicenseService } from '../../Service/driver-license/driver-license.service';
-// import { DriverLicenseService } from '../../Service/driver-license/driver-license.service';
 
 @Component({
   selector: 'app-show-driver-license-1',

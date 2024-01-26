@@ -12,6 +12,8 @@ import { AlertComponent } from './Component/alert/alert.component';
 import { SidebarComponent } from './Component/sidebar/sidebar.component';
 import { NavBarComponent } from './Component/nav-bar/nav-bar.component';
 import { MainTemplateComponent } from './Component/main-template/main-template.component';
+import { ProfileComponent } from './Page/profile/profile.component';
+import { HomeComponent } from './Page/home/home.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { MainTemplateComponent } from './Component/main-template/main-template.c
     SidebarComponent,
     NavBarComponent,
     AlertComponent,
-    MainTemplateComponent
+    MainTemplateComponent,
+    ProfileComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

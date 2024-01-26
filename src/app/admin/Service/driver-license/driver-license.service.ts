@@ -8,7 +8,7 @@ import { TokenService } from '../../../Service/token/token.service';
   providedIn: 'root'
 })
 export class DriverLicenseService{
-  private readonly apiUrl = environment.apiUrl+"/driver-license";
+  private readonly apiUrl:string=((environment.production)?environment.apiUrl:(environment.development.apiDriverLicense))+"/driver-license"
 
   constructor(private readonly http: HttpClient,private readonly token:TokenService) { }
 

@@ -77,13 +77,12 @@
               "buildTarget": "front-end-lasto:build:production"
             },
             "development": {
-              "buildTarget": "front-end-lasto:build:development",
-              "proxyConfig":"src/proxy.conf.json"
+              "buildTarget": "front-end-lasto:build:development"
             }
           },
           "defaultConfiguration": "development",
           "options": {
-            "proxyConfig":"src/proxy.conf.json"
+             
           }
         },
         "extract-i18n": {

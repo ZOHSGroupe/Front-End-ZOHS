@@ -7,6 +7,10 @@ import { EmailService } from '../../../Service/email/email.service';
 import { CheckServerMaintenanceProblemService } from '../../../Service/check-server-maintenance-proble/check-server-maintenance-problem.service';
 import { DateService } from '../../../Service/date/date.service';
 import { environment } from '../../../environment.prod';
+import { mustBeTrueValidator } from '../../Service/validitors/form.validators'; // Import your custom validator
+import { LinkService } from '../../../Service/link/link.service';
+import { FileUploadService } from '../../../Service/file-upload/file-upload.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-registration',
@@ -30,7 +34,7 @@ export class ClientRegistrationComponent implements OnInit{
   @ViewChild('prevButton2', { static: true }) prevButton2!: ElementRef;
 
 
-  constructor(private readonly fb:FormBuilder,private readonly userService:UserService,private readonly titleService:Title,private readonly clientService:ClientService,private readonly emailService:EmailService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,protected readonly dateService:DateService){
+  constructor(private readonly router:Router,private readonly fb:FormBuilder,private readonly userService:UserService,private readonly titleService:Title,private readonly clientService:ClientService,private readonly emailService:EmailService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,protected readonly dateService:DateService,private readonly linkService:LinkService,private readonly uploadFileService:FileUploadService){
     this.signupForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.maxLength(50)]],
       lastname: ['', [Validators.required, Validators.maxLength(50)]],
@@ -45,7 +49,7 @@ export class ClientRegistrationComponent implements OnInit{
       frontCardNationaleImg: ['', Validators.required],
       backCardNationaleImg: ['', Validators.required],
       clientImg: ['',Validators.required],
-      //createDate: [''], // Assuming create_date is not used for login
+      termsAndConditions: [false, [mustBeTrueValidator()]], 
       username: ['', [Validators.required, Validators.minLength(6)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     }); 
@@ -64,33 +68,60 @@ export class ClientRegistrationComponent implements OnInit{
   
 
     ngOnInit(): void {
-      if(environment.production){
-          this.checkServerConnection.checkGatewayConnection(); // IMPORTANTE
-      }
+      this.checkConnectionWithServer();
       this.titleService.setTitle('User Registration');
     }
     
-
-  signUp():boolean{
-    let ok:boolean=false;
+    checkConnectionWithServer():void{
+      if(environment.production){
+        this.checkServerConnection.checkGatewayConnection(); // IMPORTANTE
+      }
+    }
+  signUp():void{
+    this.checkConnectionWithServer();
     if(this.signupForm.valid){
-
-      this.userService.signup(this.idSql,this.signupForm.value.email,this.signupForm.value.username,this.signupForm.value.nationalId,this.signupForm.value.password).subscribe(
+      const values=this.signupForm.value;
+      this.clientService.createClient(values.firstname,values.lastname,values.nationalId,values.email,values.birthDate,values.city,values.nationality,values.gender,values.address,values.tel).subscribe(
         (response) => {
-          ok = true;
-          // Handle success response
-          console.log('Signin successful:', response);
-          // You may want to navigate to another page or perform additional actions here
+          this.idSql=response?.id;
         },
         (error) => {
-          // Handle error response
-          console.error('Signin failed:', error);
-          return false;
-          // You may want to display an error message to the user or perform other actions here
+          this.checkConnectionWithServer();
+        }
+      );
+      this.userService.signup(this.idSql,values.email,values.username,values.nationalId,values.password).subscribe(
+        (response) => {
+        
+        },
+        (error) => {
+          this.checkConnectionWithServer();
+        }
+      );
+      this.uploadFileService.uploadClientImage(values.clientImg).subscribe(
+        (response) => {
+          this.linkService.addLink("IMAGE_PROFILE",this.idSql,"CLIENT",response?.file_url);
+        },
+        (error) => {
+          this.checkConnectionWithServer();
+        }
+      );
+      this.uploadFileService.uploadClientImage(values.frontCardNationaleImg).subscribe(
+        (response) => {
+          this.linkService.addLink("IMAGE_NATIONALE_CARD_FRONT",this.idSql,"CLIENT",response?.file_url);
+        },
+        (error) => {
+          this.checkConnectionWithServer();
+        }
+      );
+      this.uploadFileService.uploadClientImage(values.backCardNationaleImg).subscribe(
+        (response) => {
+          this.linkService.addLink("IMAGE_NATIONALE_CARD_BACK",this.idSql,"CLIENT",response?.file_url);
+        },
+        (error) => {
+          this.checkConnectionWithServer();
         }
       );
     }
-    return ok;
   }
   
 
@@ -98,22 +129,11 @@ export class ClientRegistrationComponent implements OnInit{
 
   onSubmit(event: Event):void{
     console.log("Submit button clicked");
-  const values = this.signupForm.value;
-  event.preventDefault();
-  console.log("Form submission prevented");
+    const values = this.signupForm.value;
+    event.preventDefault();
+    console.log("Form submission prevented");
     if(this.codeEmailVerification==this.getDigitsCode()){
-      this.clientService.createClient(values.firstname,values.lastname,values.nationalId,values.email,values.birthDate,values.city,values.nationality,values.gender,values.address,values.tel).subscribe(
-        (response) => {
-          // Handle success response
-          console.log("created succussuflly");
-          // You may want to navigate to another page or perform additional actions here
-        },
-        (error) => {
-          // Handle error response
-          console.error('problem server');
-          // You may want to display an error message to the user or perform other actions here
-        }
-      );
+      this.router.navigate(['/']); // !!! IMPORTANT
     }else {
       if (this.codeVerificationEmailNumber === 3) {
         this.openAlert(`Incorrect code. You can click to resend. Verification code attempts exhausted.`, "danger");
@@ -125,16 +145,17 @@ export class ClientRegistrationComponent implements OnInit{
     }
   }
   sendEmailVerificationCode():void{
-    this.codeVerificationEmailNumber=0;
+    
     this.emailService.sendEmailVerificationCode(this.signupForm.value.username,this.signupForm.value.email).subscribe(
       (response:any) => {
         // Handle success response
         this.codeEmailVerification=(response as {code:string,status:string,message:string})?.code;
+        this.codeVerificationEmailNumber=0;
         // You may want to navigate to another page or perform additional actions here
       },
       (error:any) => {
         // Handle error response
-        console.error('email not send');
+        this.checkConnectionWithServer();
         // You may want to display an error message to the user or perform other actions here
       }
     );
@@ -164,64 +185,23 @@ export class ClientRegistrationComponent implements OnInit{
     }
   }
 
-  OnSubmitAccountForm():void{
+ 
     
-    if(this.signupForm.get("password")?.errors){
-      this.clickPrevButton(this.prevButton1);
-      this.openAlert("The minimum length of the password should be 8 characters","warning");
-    }
-    else if(this.signupForm.get("email")?.valid){
-      this.userService.emailExist(this.signupForm.value.email).subscribe(
-      (response) => {
-        // Handle success response
-        this.openAlert("A user already exists with the email address: " + this.signupForm.value.email,"warning");
-        this.clickPrevButton(this.prevButton1);
-        // You may want to navigate to another page or perform additional actions here
-      },
-      (error) => {
-        if(error.status==404){
-          // Handle error response
-          this.openAlert("","");
-          this.onCloseAlert();
-        }else if(error.status==500){
-          this.openAlert("There is a problem with the server connection. Please retry at another time.","danger");
-          this.clickPrevButton(this.prevButton1);
-        }
-        
-      }
-    );
-    }
-    
-  }
-  OnSubmitPersonalForm():void{
-    if(this.signupForm.get("nationalId")?.valid){
-      this.userService.nationalIdExist(this.signupForm.value.nationalId).subscribe(
-        (response) => {
-          this.openAlert("A user already exists with national ID : "+this.signupForm.value.nationalId,"warning");
-          this.clickPrevButton(this.prevButton2);
-          // You may want to navigate to another page or perform additional actions here
-        },
-        (error) => {
-          if(error.status==404){
-            console.log(this.signupForm.errors);
-            this.sendEmailVerificationCode();
-            this.openAlert("","");
-            this.onCloseAlert();
-          }else if(error.status==500){
-            this.openAlert("There is a problem with the server connection. Please retry at another time.","danger");
-            this.clickPrevButton(this.prevButton2);
-          }          
-        }
-      );
-    }
-    
-  }
+
 
 
 
   
   onCheckboxEmailChange():void{
-
+    if(this.sendRelatedEmails==true){
+      if(this.signupForm.valid){
+        this.sendEmailVerificationCode();
+      }else{
+        this.openAlert("Enter valid Information to send email verification code !","danger");
+        this.sendRelatedEmails=false;
+      }
+    }
+    console.log(this.sendRelatedEmails)
   }
   openAlert(message: string,type:string): void {
     this.alertMessage = message;

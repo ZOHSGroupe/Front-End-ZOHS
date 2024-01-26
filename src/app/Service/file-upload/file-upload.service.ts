@@ -7,15 +7,48 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FileUploadService {
-  private readonly apiUrl=environment.apiUrl+"/drive";
+  private readonly apiUrl:string=((environment.production)?environment.apiUrl:(environment.development.apiFileUploadUrl))+"/drive"
+
   constructor(private readonly http:HttpClient) { }
 
-  uploadDriverLicenseImg(path:string): Observable<any>{
+  uploadDriverLicenseImage(path:string): Observable<any>{
     const requestBody = {
       path
     };
 
     return this.http.post(`${this.apiUrl}/driver-license`, requestBody);
+  }
+
+  uploadClientImage(path:string): Observable<any>{
+    const requestBody = {
+      path
+    };
+
+    return this.http.post(`${this.apiUrl}/image-client`, requestBody);
+  }
+
+  uploadVehiculeImage(path:string): Observable<any>{
+    const requestBody = {
+      path
+    };
+
+    return this.http.post(`${this.apiUrl}/image-vihecule`, requestBody);
+  }
+
+  uploadContractImage(path:string): Observable<any>{
+    const requestBody = {
+      path
+    };
+
+    return this.http.post(`${this.apiUrl}/contract-pdf`, requestBody);
+  }
+
+  uploadNationaleIdentityImage(path:string): Observable<any>{
+    const requestBody = {
+      path
+    };
+
+    return this.http.post(`${this.apiUrl}/national-identity-card`, requestBody);
   }
 
 

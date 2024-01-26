@@ -6,7 +6,8 @@ import { environment } from '../../../environment.prod';
   providedIn: 'any'
 })
 export class ClientService {
-  private readonly apiUrl:string=environment.apiClientUrl+"/client";
+  private readonly apiUrl:string=((environment.production)?environment.apiUrl:(environment.development.apiClientUrl))+"/client"
+
   constructor(private http: HttpClient) {}
 
   createClient(FirstName:string,LastName:string,NationalID:string,Email:string,BirthDate:string,City:string,Nationality:string,Gender:string,Address:string,Tel:string): Observable<any> {
@@ -23,31 +24,6 @@ export class ClientService {
       Address,
       Tel
     };
-    return this.http.post(`${this.apiUrl}/`, requestBody);
+    return this.http.post(`${this.apiUrl}`, requestBody);
   }
-
-  
-  /*
-  getClients(): Observable<Client[]> {
-    const url = `${this.apiUrl}/client`;
-    return this.http.get<Client[]>(url);
-  }
-
-  getClient(id: string): Observable<Client> {
-    const url = `${this.apiUrl}/client/${id}`;
-    return this.http.get<Client>(url);
-  }
-
-  
-
-  updateClient(id: string, client: Client): Observable<Client> {
-    const url = `${this.apiUrl}/client/${id}`;
-    return this.http.put<Client>(url, client);
-  }
-
-  deleteClient(id: string): Observable<any> {
-    const url = `${this.apiUrl}/client/${id}`;
-    return this.http.delete(url);
-  }
-  */
 }
