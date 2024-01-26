@@ -4,15 +4,15 @@
             <span class="app-brand-logo demo"></span>
             <span class="app-brand-text demo menu-text fw-bold ms-2" style="color:#EE1C25;">ZOHS</span>
         </a>
-        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+        <span class="layout-menu-toggle menu-link text-large ms-auto">
             <i class="bx menu-toggle-icon d-none d-xl-block fs-4 align-middle"></i>
             <i class="bx bx-x d-block d-xl-none bx-sm align-middle"></i>
-        </a>
+        </span>
     </div>
     <ul class="menu-inner py-1">
         <!-- Home page -->
         <li class="menu-item">
-            <a routerLink="/vehicule/home" class="menu-link menu-toggle">
+            <a routerLink="/" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div>Home</div>
             </a>
@@ -33,85 +33,64 @@
         </li>
         <!-- Person Information -->
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a routerLink="/person/add"class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-user-check"></i>
-                <div>Person Information</div>
+                <div>Add Person Information</div>
             </a>
-            <!-- List to show/hide -->
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a routerLink="/person/add" class="menu-link">
-                        <div>Add Person Information</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a routerLink="/person/show" class="menu-link">
-                        <div>Show Person Information</div>
-                    </a>
-                </li>
-                <!-- Add other submenu items with routerLinks -->
-            </ul>
-        </li>
+        </li>  
+        <li class="menu-item">
+            <a routerLink="/person/show"class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-user-check"></i>
+                <div>Show Person Information</div>
+            </a>
+        </li>   
+           
+        
         <!-- Vehicle -->
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a routerLink="/vehicule/add"class="menu-link menu-toggle">
                 <i class="fa-solid fa-car"></i>
-                <div>Vehicule</div>
+                <div>Add Vehicule</div>
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a routerLink="/vehicule/add" class="menu-link">
-                        <div>Add Vehicule</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a routerLink="/vehicule/show" class="menu-link">
-                        <div>Show Vehicules</div>
-                    </a>
-                </li>
-                <!-- Add other Vehicle menu items as needed -->
-            </ul>
-        </li>
+        </li>  
+        <li class="menu-item">
+            <a routerLink="/vehicule/show"class="menu-link menu-toggle">
+                <i class="fa-solid fa-car"></i>
+                <div>Show Vehicules</div>
+            </a>
+        </li>  
+            
+                
         <!-- Driver License -->
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a routerLink="/driver-license/add" class="menu-link menu-toggle">
                 <i class="fa-solid fa-address-card"></i>
-                <div>Driver License</div>
+                <div>Add Driver License</div>
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a routerLink="/driver-license/add" class="menu-link">
-                        <div>Add Driver License</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a routerLink="/driver-license/show" class="menu-link">
-                        <div>Show Driver License</div>
-                    </a>
-                </li>
-                <!-- Add other Driver License menu items as needed -->
-            </ul>
-        </li>
+        </li>   
+        <li class="menu-item">
+            <a routerLink="/driver-license/show" class="menu-link menu-toggle">
+                <i class="fa-solid fa-address-card"></i>
+                <div>AShow Driver License</div>
+            </a>
+        </li>  
+            
+               
         <!-- Assurance -->
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a routerLink="/assurance/add" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-file"></i>
-                <div data-i18n="Assurance">Assurance</div>
+                <div data-i18n="Assurance">Add Assurance</div>
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a routerLink="/assurance/add" class="menu-link">
-                        <div>Add Assurance</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a routerLink="/assurance/show" class="menu-link">
-                        <div>Show Assurance</div>
-                    </a>
-                </li>
-                <!-- Add other Assurance menu items as needed -->
-            </ul>
         </li>
+        <li class="menu-item">
+            <a routerLink="/assurance/show" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Assurance">Show Assurance</div>
+            </a>
+        </li>
+        
+        
+          
     </ul>
   </aside>
-  
