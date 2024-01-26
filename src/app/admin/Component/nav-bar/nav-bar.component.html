@@ -22,35 +22,33 @@
       <ul class="navbar-nav flex-row align-items-center ms-auto">
         
         <!-- Language -->
-        <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
+        <!-- Update your HTML template -->
+        <li class="nav-item dropdown-language dropdown me-2 me-xl-0" #languageDropdown>
           <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
             <i class='fi fi-us fis rounded-circle fs-3 me-1'></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
-              <a class="dropdown-item" href="javascript:void(0);" data-language="en">
+              <a class="dropdown-item" href="javascript:void(0);" (click)="setLanguage('en')">
                 <i class="fi fi-us fis rounded-circle fs-4 me-1"></i>
                 <span class="align-middle">English</span>
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="javascript:void(0);" data-language="fr">
+              <a class="dropdown-item" href="javascript:void(0);" (click)="setLanguage('fr')">
                 <i class="fi fi-fr fis rounded-circle fs-4 me-1"></i>
                 <span class="align-middle">French</span>
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="javascript:void(0);" data-language="ma">
+              <a class="dropdown-item" href="javascript:void(0);" (click)="setLanguage('ma')">
                 <i class="fi fi-ma fis rounded-circle fs-4 me-1"></i>
                 <span class="align-middle">Arabic</span>
               </a>
             </li>
-            
-            
-            
-            
           </ul>
         </li>
+
         <!--/ Language -->
 
 

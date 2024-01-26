@@ -11,6 +11,7 @@ import { mustBeTrueValidator } from '../../Service/validitors/form.validators'; 
 import { LinkService } from '../../../Service/link/link.service';
 import { FileUploadService } from '../../../Service/file-upload/file-upload.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-client-registration',
@@ -29,12 +30,11 @@ export class ClientRegistrationComponent implements OnInit{
   typeAlert:string='';
   passwordValid:boolean=false;
   sendRelatedEmails:boolean=false;
+  cities:any;
+  countries:any;
   codeVerificationEmailNumber:number=0;
-  @ViewChild('prevButton1', { static: true }) prevButton1!: ElementRef;
-  @ViewChild('prevButton2', { static: true }) prevButton2!: ElementRef;
 
-
-  constructor(private readonly router:Router,private readonly fb:FormBuilder,private readonly userService:UserService,private readonly titleService:Title,private readonly clientService:ClientService,private readonly emailService:EmailService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,protected readonly dateService:DateService,private readonly linkService:LinkService,private readonly uploadFileService:FileUploadService){
+  constructor(private readonly http:HttpClient,private readonly router:Router,private readonly fb:FormBuilder,private readonly userService:UserService,private readonly titleService:Title,private readonly clientService:ClientService,private readonly emailService:EmailService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,protected readonly dateService:DateService,private readonly linkService:LinkService,private readonly uploadFileService:FileUploadService){
     this.signupForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.maxLength(50)]],
       lastname: ['', [Validators.required, Validators.maxLength(50)]],
@@ -70,6 +70,8 @@ export class ClientRegistrationComponent implements OnInit{
     ngOnInit(): void {
       this.checkConnectionWithServer();
       this.titleService.setTitle('User Registration');
+      this.getCities();
+      this.getCountries();
     }
     
     checkConnectionWithServer():void{
@@ -123,8 +125,20 @@ export class ClientRegistrationComponent implements OnInit{
       );
     }
   }
-  
 
+
+  getCities():void{
+    this.http.get<any[]>('assets/json/cities.json')
+    .subscribe(data => {
+      this.cities = data;
+    });
+  }
+  getCountries():void{
+    this.http.get<any[]>('assets/json/countries.json')
+    .subscribe(data => {
+      this.countries = data;
+    });
+  }
 
 
   onSubmit(event: Event):void{

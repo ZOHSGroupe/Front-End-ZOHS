@@ -68,7 +68,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return sessionStorage?.getItem('auth_token');
+          if (typeof sessionStorage !== 'undefined') {
+            return sessionStorage.getItem('auth_token');
+          } else {
+            return null; // or handle the absence of sessionStorage as needed
+          }
         },
         allowedDomains: ['*'], // specify the domains where the app is allowed to request tokens
       },
