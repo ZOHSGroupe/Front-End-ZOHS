@@ -15,6 +15,9 @@ import { ShowAssuranceComponent } from './Page/show-assurance/show-assurance.com
 import { ShowVehiculeComponent } from './Page/show-vehicule/show-vehicule.component';
 import { HomeComponent } from './Page/home/home.component';
 import { SideBarComponent } from './Component/side-bar/side-bar.component';
+import { ProcessClientComponent } from './Page/process-client/process-client.component';
+import { ProcessAssuranceComponent } from './Page/process-assurance/process-assurance.component';
+import { ProcessVehiculeComponent } from './Page/process-vehicule/process-vehicule.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { SideBarComponent } from './Component/side-bar/side-bar.component';
     MainTemplateComponent,
     NavBarComponent,
     SideBarComponent,
-    HomeComponent
+    HomeComponent,
+    ProcessClientComponent,
+    ProcessAssuranceComponent,
+    ProcessVehiculeComponent
   ],
   imports: [
     CommonModule,

@@ -7,6 +7,7 @@ import { Title } from '@angular/platform-browser';
 import { DateService } from '../../../Service/date/date.service';
 import { environment } from '../../../environment.prod';
 import { VehiculeService } from '../../Service/vehicule/vehicule.service';
+import { LinkService } from '../../../Service/link/link.service';
 
 @Component({
   selector: 'app-add-vehicule',
@@ -20,7 +21,7 @@ export class AddVehiculeComponent {
   typeAlert:string="";
   alertMessage:string="";
 
-  constructor(private readonly fileUploadService:FileUploadService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly token:TokenService,private readonly vehiculeService : VehiculeService , private readonly fb: FormBuilder,private readonly title:Title,protected readonly dateService:DateService) { 
+  constructor(private readonly fileUploadService:FileUploadService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly token:TokenService,private readonly vehiculeService : VehiculeService , private readonly fb: FormBuilder,private readonly title:Title,protected readonly dateService:DateService,private readonly linkService:LinkService) { 
     this.vehiculeForm = this.fb.group({
       marque: ['', Validators.required],
       genre: ['', Validators.required], 
@@ -44,27 +45,62 @@ export class AddVehiculeComponent {
   }
 
   ngOnInit(): void {
-    if(environment.production){
-      this.checkServerConnection.checkGatewayConnection(); // IMPORTANTE
-      this.token.notAuthenticatedEvent();
-    }
+    this.checkConnectionAndAuthorization();
     this.title.setTitle("Add Vehicule");
   }
 
-
-
-  onSubmit(): void {
-    /*  IMPORTANTE
-    if(!this.token.getDecodedToken() || this.token.isTokenExpired()){
+  checkConnectionAndAuthorization():void{
+    if(environment.production){
+      this.checkServerConnection.checkGatewayConnection(); // IMPORTANTE
       this.token.notAuthenticatedEvent();
       return;
     }
-    */
+  }
 
+  onSubmit(): void {
+    this.checkConnectionAndAuthorization();
     if (this.vehiculeForm.valid) {
-      const driverLicense= this.vehiculeForm.value;
-      console.log(driverLicense);
-  
+      const vehicule= this.vehiculeForm.value;
+      this.vehiculeService.saveVehicule(vehicule.numberOfPorts,vehicule.manufacturingDate,vehicule.grossVehiculeWeightRating,vehicule.currentCarValue,vehicule.taxHorsepower,vehicule.licensePlateNumber,vehicule.emptyWeight,vehicule.marque,vehicule.genre,vehicule.typeVehicule,vehicule.fuelType,vehicule.vehiculeIdentificationNumber,vehicule.cylinderCount,vehicule.taxIdentificationNumber).subscribe(
+        (response) => {
+          const idVehicule:string=response?.id;
+          this.fileUploadService.uploadVehiculeImage(vehicule.frontVehiculeImg).subscribe(
+            (response) => {
+              this.linkService.addLink("IMAGE_VEHICULE_FRONT",idVehicule,"VEHICULE",response?.file_url);
+            },
+            (error) => {
+              this.checkConnectionAndAuthorization();
+            }
+          );
+          this.fileUploadService.uploadVehiculeImage(vehicule.backVehiculeImg).subscribe(
+            (response) => {
+              this.linkService.addLink("IMAGE_VEHICULE_BACK",idVehicule,"VEHICULE",response?.file_url);
+            },
+            (error) => {
+              this.checkConnectionAndAuthorization();
+            }
+          );
+          this.fileUploadService.uploadVehiculeImage(vehicule.backCardVehiculeImg).subscribe(
+            (response) => {
+              this.linkService.addLink("IMAGE_CARD_VEHICULE_BACK",idVehicule,"VEHICULE",response?.file_url);
+            },
+            (error) => {
+              this.checkConnectionAndAuthorization();
+            }
+          );
+          this.fileUploadService.uploadVehiculeImage(vehicule.frontCardVehiculeImg).subscribe(
+            (response) => {
+              this.linkService.addLink("IMAGE_CARD_VEHICULE_FRONT",idVehicule,"VEHICULE",response?.file_url);
+            },
+            (error) => {
+              this.checkConnectionAndAuthorization();
+            }
+          );
+        },
+        (error) => {
+          this.checkConnectionAndAuthorization();
+        }
+      );
     }else{
       this.openAlert("Enter a valid values !!!","danger");
     }

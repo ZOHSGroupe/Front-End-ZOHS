@@ -11,6 +11,7 @@ import { AlertComponent } from './Component/alert/alert.component';
 import { SidebarComponent } from './Component/sidebar/sidebar.component';
 import { NavBarComponent } from './Component/nav-bar/nav-bar.component';
 import { MainTemplateComponent } from './Component/main-template/main-template.component';
+import { MoreInfoAboutDriverLicenseComponent } from './Page/more-info-about-driver-license/more-info-about-driver-license.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MainTemplateComponent } from './Component/main-template/main-template.c
     AlertComponent,
     SidebarComponent,
     MainTemplateComponent,
-    NavBarComponent
+    NavBarComponent,
+    MoreInfoAboutDriverLicenseComponent
   ],
   imports: [
     CommonModule,

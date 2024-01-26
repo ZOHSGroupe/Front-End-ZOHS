@@ -14,6 +14,7 @@ import { NavBarComponent } from './Component/nav-bar/nav-bar.component';
 import { MainTemplateComponent } from './Component/main-template/main-template.component';
 import { ProfileComponent } from './Page/profile/profile.component';
 import { HomeComponent } from './Page/home/home.component';
+import { MoreInfoAboutVehiculeComponent } from './Page/more-info-about-vehicule/more-info-about-vehicule.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HomeComponent } from './Page/home/home.component';
     AlertComponent,
     MainTemplateComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    MoreInfoAboutVehiculeComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,8 @@ import { HomeComponent } from './Page/home/home.component';
     RouterModule,
   ]
 })
-export class VehiculeModule { }
+export class VehiculeModule { 
+  
+}
 
 

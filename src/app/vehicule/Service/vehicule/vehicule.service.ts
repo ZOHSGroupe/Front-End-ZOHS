@@ -11,7 +11,27 @@ import { Observable } from 'rxjs';
 export class VehiculeService {
   private readonly apiUrl:string=((environment.production)?environment.apiUrl:(environment.development.apiVehicule))+"/vehicule"
   constructor(private readonly http:HttpClient,private readonly token:TokenService,protected readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly tokenService:TokenService) { }
-
+  saveVehicule(numberOfPorts:string,manufacturingDate:string,grossVehiculeWeightRating:string,currentCarValue:string,taxHorsepower:string,licensePlateNumber:string,emptyWeight:string,marque:string,genre:string,typeVehicule:string,fuelType:string,vehiculeIdentificationNumber:string,cylinderCount:string,taxIdentificationNumber:string): Observable<any> {
+    const requestBody={
+        client_id: this.token.getDecodedToken()?.idSql,  // Replace with an actual client ID
+        marque,
+        genre,
+        typeVehicule,
+        fuelType,
+        vehiculeIdentificationNumber,
+        cylinderCount,
+        taxIdentificationNumber,
+        taxHorsepower,
+        licensePlateNumber,
+        emptyWeight,
+        grossVehiculeWeightRating,
+        currentCarValue,
+        manufacturingDate,
+        status:"Pending",
+        numberOfPorts
+    };
+    return this.http.post(this.apiUrl, requestBody);
+  }
     getAllVehicule(): Observable<any> {
     // Vérifier la connexion au serveur
     this.checkServerConnection.checkGatewayConnection();

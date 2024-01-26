@@ -11,6 +11,7 @@ import { AlertComponent } from './Component/alert/alert.component';
 import { SidebarComponent } from './Component/sidebar/sidebar.component';
 import { MainTemplateComponent } from './Component/main-template/main-template.component';
 import { NavBarComponent } from './Component/nav-bar/nav-bar.component';
+import { MoreInfoAboutAssuranceComponent } from './Page/more-info-about-assurance/more-info-about-assurance.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NavBarComponent } from './Component/nav-bar/nav-bar.component';
     AlertComponent,
     SidebarComponent,
     MainTemplateComponent,
-    NavBarComponent
+    NavBarComponent,
+    MoreInfoAboutAssuranceComponent
   ],
   imports: [
     CommonModule,

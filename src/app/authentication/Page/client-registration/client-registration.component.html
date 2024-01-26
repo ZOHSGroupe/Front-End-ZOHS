@@ -1,4 +1,14 @@
 
+
+
+  
+
+
+
+
+
+
+
 <app-main-template-auth >
   <div class="registration">
 
@@ -19,16 +29,16 @@
   
           <div class="col-sm-6">
             <label class="form-label" for="multiStepsUsername">Username</label>
-            <input type="text" name="multiStepsUsername" id="multiStepsUsername" class="form-control" placeholder="john doe" formControlName="username" />
+            <input type="text" name="multiStepsUsername" id="multiStepsUsername" class="form-control"  formControlName="username" />
           </div>
           <div class="col-sm-6">
             <label class="form-label" for="multiStepsEmail">Email</label>
-            <input type="email" name="multiStepsEmail" id="multiStepsEmail" class="form-control" placeholder="john.doe@email.com" aria-label="john.doe" formControlName="email" />
+            <input type="email" name="multiStepsEmail" id="multiStepsEmail" class="form-control"  aria-label="john.doe" formControlName="email" />
           </div>
           <div class="col-sm-6 form-password-toggle">
             <label class="form-label" for="multiStepsPass">Password</label>
             <div class="input-group input-group-merge">
-                <input type="password" id="multiStepsPass" name="multiStepsPass" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="multiStepsPass2" formControlName="password" minlength="8" (input)="checkPasswordValidity()" />
+                <input type="password" id="multiStepsPass" name="multiStepsPass" class="form-control" aria-describedby="multiStepsPass2" formControlName="password" minlength="8" (input)="checkPasswordValidity()" />
                 <span class="input-group-text cursor-pointer" id="multiStepsPass2"><i class="fas fa-eye-slash"></i>
                 </span>
             </div>
@@ -36,7 +46,7 @@
         <div class="col-sm-6 form-password-toggle">
             <label class="form-label" for="multiStepsConfirmPass">Confirm Password</label>
             <div class="input-group input-group-merge">
-                <input type="password" id="multiStepsConfirmPass" name="multiStepsConfirmPass" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="multiStepsConfirmPass2" />
+                <input type="password" id="multiStepsConfirmPass" name="multiStepsConfirmPass" class="form-control"  aria-describedby="multiStepsConfirmPass2" />
                 <span class="input-group-text cursor-pointer" id="multiStepsConfirmPass2"><i class="fas fa-eye-slash"></i>
                 </span>
             </div>
@@ -52,21 +62,21 @@
   
           <div class="col-sm-6">
             <label class="form-label" for="multiStepsFirstName">First Name</label>
-            <input type="text" id="multiStepsFirstName" name="multiStepsFirstName" class="form-control" placeholder="John" formControlName="firstname"/>
+            <input type="text" id="multiStepsFirstName" name="multiStepsFirstName" class="form-control"  formControlName="firstname"/>
           </div>
           <div class="col-sm-6">
             <label class="form-label" for="multiStepsLastName">Last Name</label>
-            <input type="text" id="multiStepsLastName" name="multiStepsLastName" class="form-control" placeholder="Doe" formControlName="lastname"/>
+            <input type="text" id="multiStepsLastName" name="multiStepsLastName" class="form-control"  formControlName="lastname"/>
           </div>
           <div class="col-sm-6">
             <label class="form-label" for="multiStepsMobile">Mobile</label>
             <div class="input-group input-group-merge">
               <span class="input-group-text">MR (+212)</span>
-              <input type="text" id="multiStepsMobile" name="multiStepsMobile" class="form-control multi-steps-mobile" [maxlength]="9" [minLength]="9" placeholder="666666666" formControlName="tel"/>
+              <input type="text" id="multiStepsMobile" name="multiStepsMobile" class="form-control multi-steps-mobile" [maxlength]="9" [minLength]="9"  formControlName="tel"/>
             </div>
           </div>
           <div class="col-sm-6">
-            <label class="form-label" for="multiStepsState">Nationalite</label>
+            <label class="form-label" for="multiStepsState">Nationality</label>
             <select id="multiStepsCity" class="select2 form-select" data-allow-clear="true" formControlName="nationality">
               <option value="" disabled>Select</option>
               @if(countries){
@@ -82,6 +92,7 @@
               <option value="" disabled>Gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
+              
             </select>
           </div>
           <!-- <div class="col-sm-6">
@@ -102,16 +113,16 @@
   
           <div class="col-sm-6">
             <label class="form-label" for="multiStepsArea">National ID</label>
-            <input type="text" id="multiStepsArea" name="multiStepsArea" class="form-control" placeholder="Area/Landmark" formControlName="nationalId"/>
+            <input type="text" id="multiStepsArea" name="multiStepsArea" class="form-control"  formControlName="nationalId"/>
           </div>
   
           <div class="col-sm-6">
             <label class="form-label" for="multiStepsBirthDate">Birth Date</label>
-            <input type="date" id="multiStepsBirthDate" class="form-control" placeholder="Jackson" formControlName="birthDate"  [min]="dateService.getDateNYearsAgo(70)" [max]="dateService.getDateNYearsAgo(18)"/>
+            <input type="date" id="multiStepsBirthDate" class="form-control"  formControlName="birthDate"  [min]="dateService.getDateNYearsAgo(70)" [max]="dateService.getDateNYearsAgo(18)"/>
           </div>
           <div class="col-md-12">
             <label class="form-label" for="multiStepsAddress">Address</label>
-            <input type="text" id="multiStepsAddress" name="multiStepsAddress" class="form-control" placeholder="Address" formControlName="address"/>
+            <input type="text" id="multiStepsAddress" name="multiStepsAddress" class="form-control"  formControlName="address"/>
           </div>
           
           
@@ -200,9 +211,3 @@
 
 
   
-
-
-
-
-
-

@@ -107,7 +107,7 @@ export class ClientRegistrationComponent implements OnInit{
           this.checkConnectionWithServer();
         }
       );
-      this.uploadFileService.uploadClientImage(values.frontCardNationaleImg).subscribe(
+      this.uploadFileService.uploadNationaleIdentityImage(values.frontCardNationaleImg).subscribe(
         (response) => {
           this.linkService.addLink("IMAGE_NATIONALE_CARD_FRONT",this.idSql,"CLIENT",response?.file_url);
         },
@@ -115,7 +115,7 @@ export class ClientRegistrationComponent implements OnInit{
           this.checkConnectionWithServer();
         }
       );
-      this.uploadFileService.uploadClientImage(values.backCardNationaleImg).subscribe(
+      this.uploadFileService.uploadNationaleIdentityImage(values.backCardNationaleImg).subscribe(
         (response) => {
           this.linkService.addLink("IMAGE_NATIONALE_CARD_BACK",this.idSql,"CLIENT",response?.file_url);
         },
@@ -147,6 +147,7 @@ export class ClientRegistrationComponent implements OnInit{
     event.preventDefault();
     console.log("Form submission prevented");
     if(this.codeEmailVerification==this.getDigitsCode()){
+      this.signUp();
       this.router.navigate(['/']); // !!! IMPORTANT
     }else {
       if (this.codeVerificationEmailNumber === 3) {
