@@ -4,7 +4,6 @@ import { CheckServerMaintenanceProblemService } from '../../../Service/check-ser
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TokenService } from '../../../Service/token/token.service';
 import { Title } from '@angular/platform-browser';
-import { DateService } from '../../../Service/date/date.service';
 import { environment } from '../../../environment.prod';
 import { VehiculeService } from '../../Service/vehicule/vehicule.service';
 
@@ -20,7 +19,7 @@ export class AddVehiculeComponent {
   typeAlert:string="";
   alertMessage:string="";
 
-  constructor(private readonly fileUploadService:FileUploadService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly token:TokenService,private readonly vehiculeService : VehiculeService , private readonly fb: FormBuilder,private readonly title:Title,protected readonly dateService:DateService) { 
+  constructor(private readonly fileUploadService:FileUploadService,private readonly checkServerConnection:CheckServerMaintenanceProblemService,private readonly token:TokenService,private readonly vehiculeService : VehiculeService , private readonly fb: FormBuilder,private readonly title:Title) { 
     this.vehiculeForm = this.fb.group({
       marque: ['', Validators.required],
       genre: ['', Validators.required], 
@@ -51,24 +50,61 @@ export class AddVehiculeComponent {
     this.title.setTitle("Add Vehicule");
   }
 
-
-
   onSubmit(): void {
-    /*  IMPORTANTE
-    if(!this.token.getDecodedToken() || this.token.isTokenExpired()){
-      this.token.notAuthenticatedEvent();
-      return;
-    }
-    */
-
     if (this.vehiculeForm.valid) {
-      const driverLicense= this.vehiculeForm.value;
-      console.log(driverLicense);
-  
-    }else{
-      this.openAlert("Enter a valid values !!!","danger");
+      const vehicule = this.vehiculeForm.value;
+      console.log(vehicule);
+
+      // Call your vehicule service method here to save vehicule data
+      this.vehiculeService.saveVehicule(
+        vehicule.marque,
+        vehicule.genre,
+        vehicule.typeVehicule,
+        vehicule.numberOfPorts,
+        vehicule.fuelType,
+        vehicule.vehiculeIdentificationNumber,
+        vehicule.cylinderCount,
+        vehicule.taxIdentificationNumber,
+        vehicule.taxHorsepower,
+        vehicule.licensePlateNumber,
+        vehicule.emptyWeight,
+        vehicule.grossVehiculeWeightRating,
+        vehicule.currentCarValue,
+        vehicule.manufacturingDate
+      ).subscribe(
+        (response) => {
+          console.log('Vehicule saved successfully:', response);
+          // Perform actions after saving vehicule data
+        },
+        (error) => {
+          console.error('Failed to save vehicule:', error);
+          // Handle error response
+        }
+      );
+
+      // Example code for uploading images, replace with actual implementation
+      this.fileUploadService.uploadVehiculeImg(vehicule.frontVehiculeImg).subscribe(
+        (response) => {
+          console.log('Images uploaded successfully:', response);
+          // Perform actions after uploading images
+        },
+        (error) => {
+          console.error('Failed to upload images:', error);
+          // Handle error response
+        }
+      );
+    } else {
+      this.openAlert("Enter valid values !!!", "danger");
     }
   }
+
+
+
+
+  
+
+
+  
   openAlert(message: string,type:string): void {
     this.alertMessage = message;
     this.typeAlert=type;

@@ -17,6 +17,13 @@ export class FileUploadService {
 
     return this.http.post(`${this.apiUrl}/driver-license`, requestBody);
   }
+  uploadVehiculeImg(path:string): Observable<any>{
+    const requestBody = {
+      path
+    };
+
+    return this.http.post(`${this.apiUrl}/vehicule`, requestBody);
+  }
 
 
 
