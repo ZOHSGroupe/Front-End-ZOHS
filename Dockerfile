@@ -29,7 +29,7 @@ RUN rm -rf ./*
 COPY --from=builder /usr/src/app/dist/front-end-lasto/* .
 
 # Configuration to enable Nginx to run properly inside Docker
-COPY nginx-custom.conf /etc/nginx/conf.d/default.conf
+# COPY nginx-custom.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80 for Nginx
 EXPOSE 80
