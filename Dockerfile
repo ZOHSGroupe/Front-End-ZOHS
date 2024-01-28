@@ -1,23 +1,21 @@
-# Use an official Node.js runtime as a parent image
-FROM node:latest
 
-# Set the working directory to /app
-WORKDIR /app
+# Use an official Nginx runtime as a base image
+FROM nginx:latest
+assurance
+# Set the working directory to /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
 
-# Copy package.json and package-lock.json to /app
-COPY package*.json ./
+# Remove the default Nginx static content
+RUN rm -rf ./*
 
-# Install app dependencies
-RUN npm install
+# Copy the compiled Angular app files to the container
+COPY dist/front-end-lasto/* .
 
-# Copy app source code to /app
-COPY . .
+# Configuration to enable Nginx to run properly inside Docker
+COPY nginx-custom.conf /etc/nginx/conf.d/default.conf
 
-# Build the app for production
-RUN npm run build --prod
-
-# Expose port 80 for the container
+# Expose port 80 for Nginx
 EXPOSE 80
 
-# Start the app
-CMD ["npm", "start"]
+# Define the command to run the Nginx server
+CMD ["nginx", "-g", "daemon off;"]
