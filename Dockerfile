@@ -8,7 +8,7 @@ WORKDIR /usr/local/app
 
 # Add the source code to app
 COPY ./ /usr/local/app/
-
+RUN npm install -g npm@10.4.0
 # Install all the dependencies
 RUN npm install
 

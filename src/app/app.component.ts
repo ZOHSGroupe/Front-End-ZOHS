@@ -13,8 +13,9 @@ export class AppComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.token.setToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFNxbCI6IjQ4MDhiN2I1LThjY2ItNDE4YS04YjJjLWJiZWU1NjQ3MmNiOSIsImlhdCI6MTcwNjE0ODc0MywiZXhwIjoxNzA2MjM1MTQzfQ.bh0RDgpoth2hmvZp3_HNPP0N6Q7JoWZUKdXA0t943XY");
+    this.token.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvdWFpbCIsImlkQWRtaW4iOiI2NWI1YTk5YmEzMTA4MjVjMTk2MDNhOGQifQ.tJJt_4fl63OlWHdF5Yq50nyuQFvdj1ISIAdkki9y_Lo");
     this.translate.setDefaultLang(this.language.getLanguage());
+    console.log(this.token.getDecodedToken());
   }
 
 }
