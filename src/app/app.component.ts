@@ -13,7 +13,7 @@ export class AppComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.token.setToken("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvdWFpbCIsImlkQWRtaW4iOiI2NWI1YTk5YmEzMTA4MjVjMTk2MDNhOGQifQ.tJJt_4fl63OlWHdF5Yq50nyuQFvdj1ISIAdkki9y_Lo");
+    this.token.setToken("");
     this.translate.setDefaultLang(this.language.getLanguage());
     console.log(this.token.getDecodedToken());
   }
